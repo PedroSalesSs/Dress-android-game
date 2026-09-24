@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Placa de madeira com dois estados: normal e pressionado -->
+<selector xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <!-- Pressionado: madeira mais escura, como se a placa afundasse -->
+    <item android:state_pressed="true">
+        <shape android:shape="rectangle">
+            <gradient
+                android:angle="270"
+                android:startColor="@color/madeira_escura"
+                android:endColor="@color/madeira" />
+            <stroke
+                android:width="3dp"
+                android:color="@color/madeira_escura" />
+            <corners android:radius="6dp" />
+        </shape>
+    </item>
+
+    <!-- Normal: madeira mais clara em cima, escurecendo embaixo -->
+    <item>
+        <shape android:shape="rectangle">
+            <gradient
+                android:angle="270"
+                android:startColor="@color/madeira_clara"
+                android:endColor="@color/madeira" />
+            <stroke
+                android:width="3dp"
+                android:color="@color/madeira_escura" />
+            <corners android:radius="6dp" />
+        </shape>
+    </item>
+
+</selector>

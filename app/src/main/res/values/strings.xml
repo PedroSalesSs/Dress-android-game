@@ -1,0 +1,19 @@
+<resources>
+    <string name="app_name">Dress</string>
+    <string name="seta_anterior">Peça anterior</string>
+    <string name="seta_proxima">Próxima peça</string>
+    <string name="btn_animar">Girar</string>
+    <string name="nenhum">Nenhum</string>
+    <string name="titulo_escolha">Escolha seu personagem</string>
+    <string name="opcao_masculino">Masculino</string>
+    <string name="opcao_feminino">Feminino</string>
+    <string name="btn_voltar">Voltar à escolha de personagem</string>
+    <string name="subtitulo_escolha">Toque em um herói para começar</string>
+    <string name="creditos_titulo">Créditos</string>
+    <string name="fechar">Fechar</string>
+    <string name="creditos_texto">Personagens e roupas:\nUniversal LPC Spritesheet Character Generator (Liberated Pixel Cup), diversos autores. Licenças abertas: CC-BY-SA, GPL, OGA-BY e CC0. Lista completa de autores no arquivo CREDITOS.md do projeto.\n\nTextura de pedra:\n\"stone wall 4\", por West (OpenGameArt.org). Licença CC0.\n\nFonte:\nMedievalSharp, por Wojciech Kalinowski. Licença SIL Open Font License.</string>
+    <string name="btn_andar">Andar</string>
+    <string name="btn_parar">Parar</string>
+    <string name="btn_cor_cabelo">Mudar a cor do cabelo</string>
+    <string name="btn_tom_pele">Mudar o tom de pele</string>
+</resources>

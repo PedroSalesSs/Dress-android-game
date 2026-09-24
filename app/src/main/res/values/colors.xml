@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="black">#FF000000</color>
+    <color name="white">#FFFFFFFF</color>
+
+    <!-- Paleta medieval -->
+    <color name="madeira_escura">#3B2314</color>
+    <color name="madeira">#6B4226</color>
+    <color name="madeira_clara">#94623A</color>
+    <color name="pergaminho">#E9D8A6</color>
+    <color name="pergaminho_escuro">#C8AE72</color>
+    <color name="dourado">#D9A441</color>
+    <color name="tinta">#2E1B0E</color>
+    <color name="cinza_claro">#C8C8C8</color>
+</resources>

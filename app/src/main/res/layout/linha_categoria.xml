@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Uma linha de controle: seta esquerda | nome da peça | seta direita.
+     Este layout é reaproveitado 4 vezes na tela (uma por categoria) com <include>. -->
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="56dp"
+    android:layout_marginVertical="4dp"
+    android:gravity="center_vertical"
+    android:orientation="horizontal">
+
+    <ImageButton
+        android:id="@+id/btnAnterior"
+        android:layout_width="48dp"
+        android:layout_height="48dp"
+        android:background="?attr/selectableItemBackgroundBorderless"
+        android:contentDescription="@string/seta_anterior"
+        android:src="@drawable/ic_seta_esquerda" />
+
+    <TextView
+        android:id="@+id/txtNome"
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        android:layout_marginHorizontal="8dp"
+        android:background="@drawable/bg_pergaminho"
+        android:gravity="center"
+        android:fontFamily="@font/medieval"
+        android:textColor="@color/tinta"
+        android:textSize="20sp" />
+
+    <ImageButton
+        android:id="@+id/btnProximo"
+        android:layout_width="48dp"
+        android:layout_height="48dp"
+        android:background="?attr/selectableItemBackgroundBorderless"
+        android:contentDescription="@string/seta_proxima"
+        android:src="@drawable/ic_seta_direita" />
+
+</LinearLayout>

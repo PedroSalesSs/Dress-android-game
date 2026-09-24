@@ -1,0 +1,174 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/fundo_pedra_repetido"
+    tools:context=".MainActivity">
+
+    <!-- Área do personagem: quadrada (1:1), ocupando a largura da tela.
+         As camadas são empilhadas na ordem em que aparecem:
+         a primeira fica no fundo e a última fica por cima de todas. -->
+    <FrameLayout
+        android:id="@+id/containerPersonagem"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_margin="16dp"
+        android:background="@drawable/bg_moldura"
+        android:padding="12dp"
+        app:layout_constraintDimensionRatio="1:1"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent">
+
+        <!-- Botão de voltar, por cima do canto superior esquerdo do personagem -->
+        <ImageButton
+            android:id="@+id/btnVoltar"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:layout_margin="8dp"
+            android:background="@drawable/bg_madeira"
+            app:tint="@color/pergaminho"
+            android:contentDescription="@string/btn_voltar"
+            android:src="@drawable/ic_voltar"
+            app:layout_constraintTop_toTopOf="@id/containerPersonagem"
+            app:layout_constraintStart_toStartOf="@id/containerPersonagem" />
+
+        <!-- Base do personagem -->
+        <ImageView
+            android:id="@+id/imgCorpo"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:contentDescription="@null" />
+
+        <ImageView
+            android:id="@+id/imgCabeca"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:contentDescription="@null" />
+
+        <!-- Roupas -->
+        <ImageView
+            android:id="@+id/imgCalca"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:contentDescription="@null" />
+
+        <ImageView
+            android:id="@+id/imgSapato"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:contentDescription="@null" />
+
+        <ImageView
+            android:id="@+id/imgCamisa"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:contentDescription="@null" />
+
+        <ImageView
+            android:id="@+id/imgCabelo"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:contentDescription="@null" />
+
+    </FrameLayout>
+
+    <!-- Botão de cor do cabelo, no canto inferior direito da moldura -->
+    <ImageButton
+        android:id="@+id/btnCorCabelo"
+        android:layout_width="48dp"
+        android:layout_height="48dp"
+        android:layout_margin="20dp"
+        android:background="@drawable/bg_madeira"
+        android:contentDescription="@string/btn_cor_cabelo"
+        android:src="@drawable/ic_amostra_cor"
+        app:layout_constraintBottom_toBottomOf="@id/containerPersonagem"
+        app:layout_constraintEnd_toEndOf="@id/containerPersonagem" />
+
+    <!-- Botão de tom de pele, no canto inferior esquerdo da moldura -->
+    <ImageButton
+        android:id="@+id/btnTomPele"
+        android:layout_width="48dp"
+        android:layout_height="48dp"
+        android:layout_margin="20dp"
+        android:background="@drawable/bg_madeira"
+        android:contentDescription="@string/btn_tom_pele"
+        android:src="@drawable/ic_amostra_cor"
+        app:layout_constraintBottom_toBottomOf="@id/containerPersonagem"
+        app:layout_constraintStart_toStartOf="@id/containerPersonagem" />
+
+    <!-- Painel com as 4 linhas de setas, uma por categoria -->
+    <LinearLayout
+        android:id="@+id/painelControles"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="16dp"
+        android:orientation="vertical"
+        app:layout_constraintTop_toBottomOf="@id/containerPersonagem"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent">
+
+        <include
+            android:id="@+id/linhaCabelo"
+            layout="@layout/linha_categoria" />
+
+        <include
+            android:id="@+id/linhaCamisa"
+            layout="@layout/linha_categoria" />
+
+        <include
+            android:id="@+id/linhaCalca"
+            layout="@layout/linha_categoria" />
+
+        <include
+            android:id="@+id/linhaSapato"
+            layout="@layout/linha_categoria" />
+
+    </LinearLayout>
+    
+    <!-- Botões de ação lado a lado: girar e andar -->
+    <LinearLayout
+        android:id="@+id/painelBotoes"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:layout_marginHorizontal="32dp"
+        android:orientation="horizontal"
+        app:layout_constraintTop_toBottomOf="@id/painelControles"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent">
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/btnAnimar"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:layout_marginEnd="8dp"
+            android:background="@drawable/bg_madeira"
+            android:text="@string/btn_animar"
+            android:fontFamily="@font/medieval"
+            android:textAllCaps="false"
+            android:textColor="@color/pergaminho"
+            android:textSize="22sp"
+            android:textStyle="bold" />
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/btnAndar"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:layout_marginStart="8dp"
+            android:background="@drawable/bg_madeira"
+            android:text="@string/btn_andar"
+            android:fontFamily="@font/medieval"
+            android:textAllCaps="false"
+            android:textColor="@color/pergaminho"
+            android:textSize="22sp"
+            android:textStyle="bold" />
+
+    </LinearLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

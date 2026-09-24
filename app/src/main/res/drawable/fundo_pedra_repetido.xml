@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Textura de pedra repetida lado a lado e escurecida -->
+<bitmap xmlns:android="http://schemas.android.com/apk/res/android"
+    android:src="@drawable/fundo_pedra"
+    android:tileMode="repeat"
+    android:tint="#80000000"
+    android:tintMode="src_atop" />
