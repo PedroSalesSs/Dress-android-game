@@ -55,6 +55,19 @@ public class Personagem {
         return equipados.get(categoria);
     }
 
+    /**
+     * Retorna a primeira peça equipada que não tem a animação pedida,
+     * ou null se todas as peças suportam (e a animação pode ser tocada).
+     */
+    public Item pecaSemAnimacao(Animacao animacao) {
+        for (Item item : equipados.values()) {
+            if (!item.suporta(animacao)) {
+                return item;
+            }
+        }
+        return null;
+    }
+
     public boolean estaEquipado(Item item) {
         return item.equals(equipados.get(item.getCategoria()));
     }

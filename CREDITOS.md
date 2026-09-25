@@ -19,7 +19,7 @@ Todos os sprites vêm do **Universal LPC Spritesheet Character Generator**:
 - Repositório: https://github.com/LiberatedPixelCup/Universal-LPC-Spritesheet-Character-Generator
 - Gerador online: https://liberatedpixelcup.github.io/Universal-LPC-Spritesheet-Character-Generator/
 
-Em todos os casos foi usado o arquivo `walk.png` de cada peça. Os arquivos estão em `app/src/main/res/drawable-nodpi` com os nomes indicados entre parênteses. As versões femininas de calças e calçados vêm das pastas `thin`, que é o formato de perna usado pelo corpo feminino no LPC. As imagens foram modificadas em tempo de execução pelo app (recorte de quadros, ampliação, troca da cor do cabelo e do tom de pele).
+Para cada peça foram usados os arquivos `walk.png`, `run.png` e `sit.png`, juntados pelo projeto numa única folha (andar, correr e sentar, nessa ordem). Os arquivos estão em `app/src/main/res/drawable-nodpi` com os nomes indicados entre parênteses. As versões femininas de calças e calçados vêm das pastas `thin`, que é o formato de perna usado pelo corpo feminino no LPC. As imagens foram modificadas em tempo de execução pelo app (recorte de quadros, ampliação, troca da cor do cabelo e do tom de pele).
 
 ### Todos os autores dos sprites usados
 
@@ -29,7 +29,7 @@ bluecarrot16, JaidynReiman, Benjamin K. Smith (BenCreating), Evert, Eliza Wyatt 
 
 **Corpo masculino** (`corpo_m.png`)
 
-- Origem no LPC: `spritesheets/body/bodies/male/walk.png`
+- Origem no LPC: `spritesheets/body/bodies/male/`
 - Autores: bluecarrot16, JaidynReiman, Benjamin K. Smith (BenCreating), Evert, Eliza Wyatt (ElizaWy), TheraHedwig, MuffinElZangano, Durrani, Johannes Sjölund (wulax), Stephen Challener (Redshrike)
 - Licenças: OGA-BY 3.0, CC-BY-SA 3.0, GPL 3.0
 - Links:
@@ -46,7 +46,7 @@ bluecarrot16, JaidynReiman, Benjamin K. Smith (BenCreating), Evert, Eliza Wyatt 
 
 **Corpo feminino** (`corpo_f.png`)
 
-- Origem no LPC: `spritesheets/body/bodies/female/walk.png`
+- Origem no LPC: `spritesheets/body/bodies/female/`
 - Autores: Benjamin K. Smith (BenCreating), bluecarrot16, TheraHedwig, Evert, MuffinElZangano, Durrani, Pierre Vigier (pvigier), ElizaWy, Matthew Krohn (makrohn), Johannes Sjölund (wulax), Stephen Challener (Redshrike)
 - Licenças: OGA-BY 3.0, CC-BY-SA 3.0, GPL 3.0
 - Links:
@@ -64,7 +64,7 @@ bluecarrot16, JaidynReiman, Benjamin K. Smith (BenCreating), Evert, Eliza Wyatt 
 
 **Cabeça masculina** (`cabeca_m.png`)
 
-- Origem no LPC: `spritesheets/head/heads/human/male/walk.png`
+- Origem no LPC: `spritesheets/head/heads/human/male/`
 - Autores: bluecarrot16, Benjamin K. Smith (BenCreating), Stephen Challener (Redshrike)
 - Licenças: OGA-BY 3.0, CC-BY-SA 3.0, GPL 3.0
 - Links:
@@ -74,7 +74,7 @@ bluecarrot16, JaidynReiman, Benjamin K. Smith (BenCreating), Evert, Eliza Wyatt 
 
 **Cabeça feminina** (`cabeca_f.png`)
 
-- Origem no LPC: `spritesheets/head/heads/human/female/walk.png`
+- Origem no LPC: `spritesheets/head/heads/human/female/`
 - Autores: bluecarrot16, Benjamin K. Smith (BenCreating), Stephen Challener (Redshrike)
 - Licenças: OGA-BY 3.0, CC-BY-SA 3.0, GPL 3.0
 - Links:
@@ -86,7 +86,7 @@ bluecarrot16, JaidynReiman, Benjamin K. Smith (BenCreating), Evert, Eliza Wyatt 
 
 **Afro** (`cabelo_afro.png`)
 
-- Origem no LPC: `spritesheets/hair/afro/adult/walk.png`
+- Origem no LPC: `spritesheets/hair/afro/adult/`
 - Autores: bluecarrot16
 - Licenças: CC0
 - Links:
@@ -94,7 +94,7 @@ bluecarrot16, JaidynReiman, Benjamin K. Smith (BenCreating), Evert, Eliza Wyatt 
 
 **Bagunçado** (`cabelo_baguncado.png`)
 
-- Origem no LPC: `spritesheets/hair/bedhead/adult/walk.png`
+- Origem no LPC: `spritesheets/hair/bedhead/adult/`
 - Autores: JaidynReiman, Manuel Riecke (MrBeast)
 - Licenças: CC-BY-SA 3.0, GPL 3.0
 - Links:
@@ -103,7 +103,7 @@ bluecarrot16, JaidynReiman, Benjamin K. Smith (BenCreating), Evert, Eliza Wyatt 
 
 **Cacheado** (`cabelo_cacheado.png`)
 
-- Origem no LPC: `spritesheets/hair/curly_long/adult/walk.png`
+- Origem no LPC: `spritesheets/hair/curly_long/adult/`
 - Autores: ElizaWy
 - Licenças: OGA-BY 3.0
 - Links:
@@ -111,7 +111,7 @@ bluecarrot16, JaidynReiman, Benjamin K. Smith (BenCreating), Evert, Eliza Wyatt 
 
 **Idol** (`cabelo_idol.png`)
 
-- Origem no LPC: `spritesheets/hair/idol/adult/walk.png`
+- Origem no LPC: `spritesheets/hair/idol/adult/`
 - Autores: thecilekli, bluecarrot16
 - Licenças: CC0
 - Links:
@@ -123,7 +123,7 @@ bluecarrot16, JaidynReiman, Benjamin K. Smith (BenCreating), Evert, Eliza Wyatt 
 
 **Longo** (`cabelo_longo.png`)
 
-- Origem no LPC: `spritesheets/hair/half_up/adult/walk.png`
+- Origem no LPC: `spritesheets/hair/half_up/adult/`
 - Autores: ElizaWy
 - Licenças: OGA-BY 3.0
 - Links:
@@ -131,7 +131,7 @@ bluecarrot16, JaidynReiman, Benjamin K. Smith (BenCreating), Evert, Eliza Wyatt 
 
 **Solto** (`cabelo_solto.png`)
 
-- Origem no LPC: `spritesheets/hair/loose/adult/walk.png`
+- Origem no LPC: `spritesheets/hair/long/adult/`
 - Autores: JaidynReiman, Manuel Riecke (MrBeast)
 - Licenças: CC-BY-SA 3.0, GPL 3.0
 - Links:
@@ -142,7 +142,7 @@ bluecarrot16, JaidynReiman, Benjamin K. Smith (BenCreating), Evert, Eliza Wyatt 
 
 **Camiseta (masculina)** (`camisa_tshirt_m.png`)
 
-- Origem no LPC: `spritesheets/torso/clothes/shortsleeve/tshirt/male/walk.png`
+- Origem no LPC: `spritesheets/torso/clothes/shortsleeve/tshirt/male/`
 - Autores: ElizaWy, JaidynReiman, Stephen Challener (Redshrike), Johannes Sjölund (wulax)
 - Licenças: OGA-BY 3.0
 - Links:
@@ -154,7 +154,7 @@ bluecarrot16, JaidynReiman, Benjamin K. Smith (BenCreating), Evert, Eliza Wyatt 
 
 **Camiseta (feminina)** (`camisa_tshirt_f.png`)
 
-- Origem no LPC: `spritesheets/torso/clothes/shortsleeve/tshirt/female/walk.png`
+- Origem no LPC: `spritesheets/torso/clothes/shortsleeve/tshirt/female/`
 - Autores: ElizaWy, JaidynReiman, Stephen Challener (Redshrike), Johannes Sjölund (wulax)
 - Licenças: OGA-BY 3.0
 - Links:
@@ -166,7 +166,7 @@ bluecarrot16, JaidynReiman, Benjamin K. Smith (BenCreating), Evert, Eliza Wyatt 
 
 **Cota de malha (masculina)** (`camisa_chainmail_m.png`)
 
-- Origem no LPC: `spritesheets/torso/chainmail/male/walk.png`
+- Origem no LPC: `spritesheets/torso/chainmail/male/`
 - Autores: Johannes Sjölund (wulax), Napsio (Vitruvian Studio), JaidynReiman
 - Licenças: OGA-BY 3.0, CC-BY-SA 3.0, GPL 3.0
 - Links:
@@ -175,7 +175,7 @@ bluecarrot16, JaidynReiman, Benjamin K. Smith (BenCreating), Evert, Eliza Wyatt 
 
 **Cota de malha (feminina)** (`camisa_chainmail_f.png`)
 
-- Origem no LPC: `spritesheets/torso/chainmail/female/walk.png`
+- Origem no LPC: `spritesheets/torso/chainmail/female/`
 - Autores: Johannes Sjölund (wulax), Napsio (Vitruvian Studio), JaidynReiman
 - Licenças: OGA-BY 3.0, CC-BY-SA 3.0, GPL 3.0
 - Links:
@@ -184,7 +184,7 @@ bluecarrot16, JaidynReiman, Benjamin K. Smith (BenCreating), Evert, Eliza Wyatt 
 
 **Peitoral de armadura (masculino)** (`camisa_armour_m.png`)
 
-- Origem no LPC: `spritesheets/torso/armour/plate/male/walk.png`
+- Origem no LPC: `spritesheets/torso/armour/plate/male/`
 - Autores: Napsio (Vitruvian Studio), JaidynReiman, bluecarrot16, Michael Whitlock (bigbeargames), Johannes Sjölund (wulax)
 - Licenças: OGA-BY 3.0, CC-BY-SA 3.0, GPL 3.0
 - Links:
@@ -194,7 +194,7 @@ bluecarrot16, JaidynReiman, Benjamin K. Smith (BenCreating), Evert, Eliza Wyatt 
 
 **Peitoral de armadura (feminino)** (`camisa_armour_f.png`)
 
-- Origem no LPC: `spritesheets/torso/armour/plate/female/walk.png`
+- Origem no LPC: `spritesheets/torso/armour/plate/female/`
 - Autores: JaidynReiman, bluecarrot16, Michael Whitlock (bigbeargames), Matthew Krohn (makrohn), Johannes Sjölund (wulax)
 - Licenças: OGA-BY 3.0, CC-BY-SA 3.0, GPL 3.0
 - Links:
@@ -207,7 +207,7 @@ bluecarrot16, JaidynReiman, Benjamin K. Smith (BenCreating), Evert, Eliza Wyatt 
 
 **Calça (masculina)** (`calca_pants_m.png`)
 
-- Origem no LPC: `spritesheets/legs/pants/male/walk.png`
+- Origem no LPC: `spritesheets/legs/pants/male/`
 - Autores: bluecarrot16, JaidynReiman, ElizaWy, Matthew Krohn (makrohn), Johannes Sjölund (wulax), Stephen Challener (Redshrike)
 - Licenças: OGA-BY 3.0, GPL 3.0, CC-BY-SA 3.0
 - Links:
@@ -218,7 +218,7 @@ bluecarrot16, JaidynReiman, Benjamin K. Smith (BenCreating), Evert, Eliza Wyatt 
 
 **Calça (feminina)** (`calca_pants_f.png`)
 
-- Origem no LPC: `spritesheets/legs/pants/thin/walk.png`
+- Origem no LPC: `spritesheets/legs/pants/thin/`
 - Autores: bluecarrot16, JaidynReiman, ElizaWy, Joe White, Matthew Krohn (makrohn), Johannes Sjölund (wulax), Stephen Challener (Redshrike)
 - Licenças: OGA-BY 3.0, GPL 3.0, CC-BY-SA 3.0
 - Links:
@@ -230,7 +230,7 @@ bluecarrot16, JaidynReiman, Benjamin K. Smith (BenCreating), Evert, Eliza Wyatt 
 
 **Legging (masculina)** (`calca_legs_m.png`)
 
-- Origem no LPC: `spritesheets/legs/leggings/male/walk.png`
+- Origem no LPC: `spritesheets/legs/leggings/male/`
 - Autores: bluecarrot16, ElizaWy, JaidynReiman, Mandi Paugh, William.Thompsonj, Johannes Sjölund (wulax), Stephen Challener (Redshrike)
 - Licenças: OGA-BY 3.0, GPL 3.0
 - Links:
@@ -240,7 +240,7 @@ bluecarrot16, JaidynReiman, Benjamin K. Smith (BenCreating), Evert, Eliza Wyatt 
 
 **Legging (feminina)** (`calca_legs_f.png`)
 
-- Origem no LPC: `spritesheets/legs/leggings/thin/walk.png`
+- Origem no LPC: `spritesheets/legs/leggings/thin/`
 - Autores: bluecarrot16, ElizaWy, JaidynReiman, Mandi Paugh, William.Thompsonj, Johannes Sjölund (wulax), Stephen Challener (Redshrike)
 - Licenças: OGA-BY 3.0
 - Links:
@@ -249,29 +249,33 @@ bluecarrot16, JaidynReiman, Benjamin K. Smith (BenCreating), Evert, Eliza Wyatt 
   - https://opengameart.org/content/lpc-expanded-pants
 - Observações: Original bases by Redshrike, thrust/shoot bases by Wulax, adapted from sara's leggings to v3 bases by bluecarrot16, jump/run/sit by JaidynReiman based on ElizaWy's and modified to match
 
-**Perneira de armadura (masculina)** (`calca_armour_m.png`)
+**Saia de legionário (masculina)** (`calca_legion_m.png`)
 
-- Origem no LPC: `spritesheets/legs/armour/plate/male/walk.png`
-- Autores: bluecarrot16, JaidynReiman, Michael Whitlock (bigbeargames), Matthew Krohn (makrohn), Johannes Sjölund (wulax)
-- Licenças: OGA-BY 3.0, CC-BY-SA 3.0, GPL 3.0
+- Origem no LPC: `spritesheets/legs/skirts/legion/male/`
+- Autores: bluecarrot16, Nila122, JaidynReiman
+- Licenças: OGA-BY 3.0, CC-BY-SA 3.0, GPL 2.0, GPL 3.0
 - Links:
-  - https://opengameart.org/content/lpc-medieval-fantasy-character-sprites
-- Observações: reduced to 7 colors an adapted to v3 bases by bluecarrot16, climb/jump/sit/emote/run by JaidynReiman
+  - https://opengameart.org/content/lpc-roman-armor
+  - http://opengameart.org/content/lpc-clothing-updates
+  - https://opengameart.org/content/lpc-expanded-armour
+- Observações: original by Nila122 to legion, adapted to v3 bases by bluecarrot16, climb/jump/sit/run by JaidynReiman
 
-**Perneira de armadura (feminina)** (`calca_armour_f.png`)
+**Saia de legionário (feminina)** (`calca_legion_f.png`)
 
-- Origem no LPC: `spritesheets/legs/armour/plate/thin/walk.png`
-- Autores: bluecarrot16, JaidynReiman, Michael Whitlock (bigbeargames), Matthew Krohn (makrohn), Johannes Sjölund (wulax)
-- Licenças: OGA-BY 3.0, CC-BY-SA 3.0, GPL 3.0
+- Origem no LPC: `spritesheets/legs/skirts/legion/thin/`
+- Autores: bluecarrot16, Nila122, JaidynReiman
+- Licenças: OGA-BY 3.0, CC-BY-SA 3.0, GPL 2.0, GPL 3.0
 - Links:
-  - https://opengameart.org/content/lpc-medieval-fantasy-character-sprites
-- Observações: reduced to 7 colors an adapted to v3 bases by bluecarrot16, climb/jump/sit/emote/run by JaidynReiman
+  - https://opengameart.org/content/lpc-roman-armor
+  - http://opengameart.org/content/lpc-clothing-updates
+  - https://opengameart.org/content/lpc-expanded-armour
+- Observações: original by Nila122 to legion, adapted to v3 bases by bluecarrot16, climb/jump/sit/run by JaidynReiman
 
 ### Calçados
 
 **Sapato (masculino)** (`pe_shoes_m.png`)
 
-- Origem no LPC: `spritesheets/feet/shoes/basic/male/walk.png`
+- Origem no LPC: `spritesheets/feet/shoes/basic/male/`
 - Autores: JaidynReiman, bluecarrot16, Johannes Sjölund (wulax)
 - Licenças: OGA-BY 3.0, CC-BY-SA 3.0, GPL 3.0
 - Links:
@@ -282,7 +286,7 @@ bluecarrot16, JaidynReiman, Benjamin K. Smith (BenCreating), Evert, Eliza Wyatt 
 
 **Sapato (feminino)** (`pe_shoes_f.png`)
 
-- Origem no LPC: `spritesheets/feet/shoes/basic/thin/walk.png`
+- Origem no LPC: `spritesheets/feet/shoes/basic/thin/`
 - Autores: JaidynReiman, Joe White, Johannes Sjölund (wulax)
 - Licenças: OGA-BY 3.0, CC-BY-SA 3.0, GPL 3.0
 - Links:
@@ -293,7 +297,7 @@ bluecarrot16, JaidynReiman, Benjamin K. Smith (BenCreating), Evert, Eliza Wyatt 
 
 **Sandália (masculina)** (`pe_sandals_m.png`)
 
-- Origem no LPC: `spritesheets/feet/sandals/male/walk.png`
+- Origem no LPC: `spritesheets/feet/sandals/male/`
 - Autores: Nila122, JaidynReiman, Matthew Krohn (makrohn), Johannes Sjölund (wulax)
 - Licenças: OGA-BY 3.0, CC-BY-SA 3.0, GPL 2.0, GPL 3.0
 - Links:
@@ -304,7 +308,7 @@ bluecarrot16, JaidynReiman, Benjamin K. Smith (BenCreating), Evert, Eliza Wyatt 
 
 **Sandália (feminina)** (`pe_sandals_f.png`)
 
-- Origem no LPC: `spritesheets/feet/sandals/thin/walk.png`
+- Origem no LPC: `spritesheets/feet/sandals/thin/`
 - Autores: Nila122, JaidynReiman, Matthew Krohn (makrohn), Johannes Sjölund (wulax)
 - Licenças: OGA-BY 3.0, CC-BY-SA 3.0, GPL 2.0, GPL 3.0
 - Links:
@@ -315,7 +319,7 @@ bluecarrot16, JaidynReiman, Benjamin K. Smith (BenCreating), Evert, Eliza Wyatt 
 
 **Botas de armadura (masculinas)** (`pe_armour_m.png`)
 
-- Origem no LPC: `spritesheets/feet/armour/plate/male/walk.png`
+- Origem no LPC: `spritesheets/feet/armour/plate/male/`
 - Autores: Matthew Krohn (makrohn), Johannes Sjölund (wulax)
 - Licenças: OGA-BY 3.0, CC-BY-SA 3.0, GPL 3.0
 - Links:
@@ -324,7 +328,7 @@ bluecarrot16, JaidynReiman, Benjamin K. Smith (BenCreating), Evert, Eliza Wyatt 
 
 **Botas de armadura (femininas)** (`pe_armour_f.png`)
 
-- Origem no LPC: `spritesheets/feet/armour/plate/thin/walk.png`
+- Origem no LPC: `spritesheets/feet/armour/plate/thin/`
 - Autores: Matthew Krohn (makrohn), Johannes Sjölund (wulax)
 - Licenças: OGA-BY 3.0, CC-BY-SA 3.0, GPL 3.0
 - Links:

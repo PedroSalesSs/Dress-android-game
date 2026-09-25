@@ -14,6 +14,11 @@
     <string name="creditos_texto">Personagens e roupas:\nUniversal LPC Spritesheet Character Generator (Liberated Pixel Cup), diversos autores. Licenças abertas: CC-BY-SA, GPL, OGA-BY e CC0. Lista completa de autores no arquivo CREDITOS.md do projeto.\n\nTextura de pedra:\n\"stone wall 4\", por West (OpenGameArt.org). Licença CC0.\n\nFonte:\nMedievalSharp, por Wojciech Kalinowski. Licença SIL Open Font License.</string>
     <string name="btn_andar">Andar</string>
     <string name="btn_parar">Parar</string>
+    <string name="btn_correr">Correr</string>
+    <string name="btn_sentar">Sentar</string>
+    <string name="btn_levantar">Levantar</string>
+    <!-- %1$s é substituído pelo nome da peça -->
+    <string name="aviso_sem_animacao">A peça \"%1$s\" não tem essa animação. Troque-a para usar este botão.</string>
     <string name="btn_cor_cabelo">Mudar a cor do cabelo</string>
     <string name="btn_tom_pele">Mudar o tom de pele</string>
 </resources>

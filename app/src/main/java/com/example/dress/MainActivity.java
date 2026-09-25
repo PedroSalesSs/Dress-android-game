@@ -7,7 +7,9 @@ import android.graphics.ColorMatrixColorFilter;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Looper;
+import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.Toast;
 
 import androidx.activity.EdgeToEdge;
 import androidx.annotation.DrawableRes;
@@ -20,6 +22,7 @@ import androidx.core.widget.ImageViewCompat;
 import com.example.dress.data.Catalogo;
 import com.example.dress.databinding.ActivityMainBinding;
 import com.example.dress.databinding.LinhaCategoriaBinding;
+import com.example.dress.model.Animacao;
 import com.example.dress.model.Categoria;
 import com.example.dress.model.CorCabelo;
 import com.example.dress.model.Direcao;
@@ -36,9 +39,6 @@ public class MainActivity extends AppCompatActivity {
     /** Chave usada pela tela de escolha para enviar o tipo de corpo para esta tela. */
     public static final String EXTRA_TIPO_CORPO = "tipo_corpo";
 
-    /** Tempo entre um quadro e outro da caminhada (100 ms = 10 quadros por segundo). */
-    private static final long INTERVALO_QUADRO_MS = 100;
-
     /**
      * Quanto o tom de cinza do cabelo é "clareado" antes de ser tingido.
      * Valores maiores deixam as cores mais claras e vivas.
@@ -53,17 +53,19 @@ public class MainActivity extends AppCompatActivity {
 
     // ===== Estado da animação =====
     private final Handler handler = new Handler(Looper.getMainLooper());
-    private boolean andando = false;
-    private int quadroAtual = SpriteLoader.QUADRO_PARADO;
+    private Animacao animacaoAtual = Animacao.PARADO;
+    private int passo = 0;                                // posição dentro do ciclo da animação
+    private int quadroAtual = SpriteLoader.QUADRO_PARADO; // quadro real da folha que está na tela
 
-    /** Tarefa que avança um quadro da caminhada e se agenda de novo. */
+    /** Tarefa que avança um quadro da animação atual e se agenda de novo. */
     private final Runnable passoDaAnimacao = new Runnable() {
         @Override
         public void run() {
-            // Avança pelos quadros 1 a 8 e volta para o 1 depois do 8
-            quadroAtual = (quadroAtual % SpriteLoader.QUADROS_ANDANDO) + 1;
+            // Ex.: no ANDAR vai do quadro 1 ao 8 e volta ao 1; no CORRER, do 0 ao 7
+            passo = (passo + 1) % animacaoAtual.getTotalQuadros();
+            quadroAtual = animacaoAtual.getQuadro(passo);
             atualizarTela();
-            handler.postDelayed(this, INTERVALO_QUADRO_MS);
+            handler.postDelayed(this, animacaoAtual.getIntervaloMs());
         }
     };
 
@@ -94,14 +96,10 @@ public class MainActivity extends AppCompatActivity {
             atualizarTela();
         });
 
-        // Alterna entre andar e parar
-        binding.btnAndar.setOnClickListener(v -> {
-            if (andando) {
-                pararAnimacao();
-            } else {
-                iniciarAnimacao();
-            }
-        });
+        // Cada botão liga a sua animação; tocar de novo no mesmo botão volta a ficar parado
+        binding.btnAndar.setOnClickListener(v -> alternarAnimacao(Animacao.ANDAR));
+        binding.btnCorrer.setOnClickListener(v -> alternarAnimacao(Animacao.CORRER));
+        binding.btnSentar.setOnClickListener(v -> alternarAnimacao(Animacao.SENTAR));
 
         // Fecha esta tela e volta para a tela de escolha (que está embaixo na pilha)
         binding.btnVoltar.setOnClickListener(v -> finish());
@@ -120,6 +118,7 @@ public class MainActivity extends AppCompatActivity {
 
         aplicarCorCabelo();
         aplicarTomPele();
+        atualizarDisponibilidadeBotoes();
     }
 
     /**
@@ -180,23 +179,84 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onPause() {
         super.onPause();
-        if (andando) {
+        if (animacaoAtual != Animacao.PARADO) {
             pararAnimacao();
         }
     }
 
-    private void iniciarAnimacao() {
-        andando = true;
-        binding.btnAndar.setText(R.string.btn_parar);
-        handler.post(passoDaAnimacao);
+    /**
+     * Se a animação pedida já está tocando, para. Se não, troca para ela
+     * (dá para ir direto de andar para correr, sem precisar parar antes).
+     */
+    private void alternarAnimacao(Animacao animacao) {
+        if (animacaoAtual == animacao) {
+            pararAnimacao();
+            return;
+        }
+
+        // Alguma peça equipada não tem essa animação no LPC? Avisa em vez de desenhar errado.
+        Item semSuporte = personagem.pecaSemAnimacao(animacao);
+        if (semSuporte != null) {
+            Toast.makeText(this,
+                    getString(R.string.aviso_sem_animacao, semSuporte.getNome()),
+                    Toast.LENGTH_SHORT).show();
+            return;
+        }
+
+        iniciarAnimacao(animacao);
+    }
+
+    private void iniciarAnimacao(Animacao animacao) {
+        handler.removeCallbacks(passoDaAnimacao); // interrompe a anterior, se houver
+        animacaoAtual = animacao;
+        passo = 0;
+        quadroAtual = animacao.getQuadro(passo);
+        atualizarTextosBotoes();
+        atualizarTela();
+
+        // Sentar é uma pose fixa: basta desenhar uma vez, sem ficar trocando quadros
+        if (animacao.temMovimento()) {
+            handler.postDelayed(passoDaAnimacao, animacao.getIntervaloMs());
+        }
     }
 
     private void pararAnimacao() {
-        andando = false;
         handler.removeCallbacks(passoDaAnimacao);
+        animacaoAtual = Animacao.PARADO;
+        passo = 0;
         quadroAtual = SpriteLoader.QUADRO_PARADO;
-        binding.btnAndar.setText(R.string.btn_andar);
+        atualizarTextosBotoes();
         atualizarTela();
+    }
+
+    /** O botão da animação que está tocando mostra "Parar" (ou "Levantar"); os outros, o nome normal. */
+    private void atualizarTextosBotoes() {
+        definirTexto(binding.btnAndar, Animacao.ANDAR, R.string.btn_andar, R.string.btn_parar);
+        definirTexto(binding.btnCorrer, Animacao.CORRER, R.string.btn_correr, R.string.btn_parar);
+        definirTexto(binding.btnSentar, Animacao.SENTAR, R.string.btn_sentar, R.string.btn_levantar);
+    }
+
+    private void definirTexto(Button botao, Animacao animacao, int textoNormal, int textoAtivo) {
+        botao.setText(animacaoAtual == animacao ? textoAtivo : textoNormal);
+    }
+
+    /**
+     * Deixa o botão meio apagado quando alguma peça equipada não tem a animação.
+     * Ele continua clicável para poder mostrar o aviso explicando o motivo.
+     */
+    private void atualizarDisponibilidadeBotoes() {
+        for (Animacao animacao : new Animacao[]{Animacao.ANDAR, Animacao.CORRER, Animacao.SENTAR}) {
+            boolean disponivel = personagem.pecaSemAnimacao(animacao) == null;
+            botaoDa(animacao).setAlpha(disponivel ? 1f : 0.5f);
+        }
+    }
+
+    private Button botaoDa(Animacao animacao) {
+        switch (animacao) {
+            case CORRER: return binding.btnCorrer;
+            case SENTAR: return binding.btnSentar;
+            default:     return binding.btnAndar;
+        }
     }
 
     /**
@@ -247,6 +307,12 @@ public class MainActivity extends AppCompatActivity {
         } else {
             personagem.equipar(opcoes.get(nova));
         }
+
+        // Vestiu uma peça que não tem a animação atual (ex.: durante a corrida)? Para.
+        if (personagem.pecaSemAnimacao(animacaoAtual) != null) {
+            pararAnimacao();
+        }
+        atualizarDisponibilidadeBotoes();
         atualizarTela();
     }
 
@@ -288,7 +354,8 @@ public class MainActivity extends AppCompatActivity {
             camada.setImageDrawable(null);
             return;
         }
-        camada.setImageBitmap(SpriteLoader.carregar(this, imagem, direcao, quadroAtual, tom));
+        camada.setImageBitmap(
+                SpriteLoader.carregar(this, imagem, animacaoAtual, direcao, quadroAtual, tom));
         camada.getDrawable().setFilterBitmap(false);
     }
 }

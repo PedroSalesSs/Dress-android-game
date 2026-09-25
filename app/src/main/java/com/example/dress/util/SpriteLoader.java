@@ -7,6 +7,7 @@ import android.graphics.Color;
 
 import androidx.annotation.DrawableRes;
 
+import com.example.dress.model.Animacao;
 import com.example.dress.model.Direcao;
 import com.example.dress.model.TomPele;
 
@@ -14,7 +15,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 /**
- * Carrega spritesheets LPC e recorta o quadro pedido (direção + quadro da animação),
+ * Carrega spritesheets LPC e recorta o quadro pedido (animação + direção + quadro),
  * podendo também trocar o tom de pele dos pixels de pele.
  * Os quadros ficam no tamanho original (64x64); quem mostra a imagem na tela
  * é responsável por ampliar sem suavização (setFilterBitmap(false)).
@@ -26,12 +27,11 @@ public final class SpriteLoader {
     /** Quadro 0 da animação walk: o personagem parado. */
     public static final int QUADRO_PARADO = 0;
 
-    /** Quantidade de quadros do ciclo de caminhada (quadros 1 a 8 da animação walk). */
-    public static final int QUADROS_ANDANDO = 8;
-
-    // Em qual linha a animação "walk" começa dentro de cada formato de arquivo
-    private static final int INICIO_WALK_ARQUIVO_WALK = 0;     // arquivo só com walk (4 linhas)
-    private static final int INICIO_WALK_FOLHA_COMPLETA = 8;   // folha completa (walk começa na linha 8)
+    // Formatos de arquivo aceitos, identificados pela quantidade de linhas de 64 px
+    private static final int LINHAS_FOLHA_DRESS = 12;  // andar + correr + sentar (formato do jogo)
+    private static final int LINHAS_ARQUIVO_WALK = 4;  // arquivo só com walk
+    private static final int LINHAS_FOLHA_COMPLETA = 21; // folha completa antiga do LPC
+    private static final int INICIO_WALK_FOLHA_COMPLETA = 8; // na folha completa, walk começa na linha 8
 
     // Faixa de cor considerada "pele" (no formato HSV)
     private static final float MATIZ_PELE_MAX = 50f;       // de 0° (vermelho) até 50° (laranja-amarelado)
@@ -50,23 +50,27 @@ public final class SpriteLoader {
 
     /** Versão simplificada: personagem parado, de frente, pele original. */
     public static Bitmap carregar(Context context, @DrawableRes int resId) {
-        return carregar(context, resId, Direcao.FRENTE, QUADRO_PARADO, TomPele.CLARA);
+        return carregar(context, resId, Animacao.PARADO, Direcao.FRENTE, QUADRO_PARADO, TomPele.CLARA);
     }
 
     /** Personagem parado, virado para a direção informada, pele original. */
     public static Bitmap carregar(Context context, @DrawableRes int resId, Direcao direcao) {
-        return carregar(context, resId, direcao, QUADRO_PARADO, TomPele.CLARA);
+        return carregar(context, resId, Animacao.PARADO, direcao, QUADRO_PARADO, TomPele.CLARA);
     }
 
-    /** Quadro específico da animação, pele original (usado para as roupas). */
+    /** Quadro específico da caminhada, pele original. */
     public static Bitmap carregar(Context context, @DrawableRes int resId, Direcao direcao, int quadro) {
-        return carregar(context, resId, direcao, quadro, TomPele.CLARA);
+        return carregar(context, resId, Animacao.ANDAR, direcao, quadro, TomPele.CLARA);
     }
 
-    /** Quadro específico da animação, com o tom de pele informado (usado para corpo e cabeça). */
-    public static Bitmap carregar(Context context, @DrawableRes int resId,
+    /**
+     * Quadro específico de qualquer animação, com o tom de pele informado.
+     * É a versão completa, usada pela tela de vestir; as outras apenas preenchem valores padrão.
+     */
+    public static Bitmap carregar(Context context, @DrawableRes int resId, Animacao animacao,
                                   Direcao direcao, int quadro, TomPele tom) {
-        String chave = resId + "_" + direcao.name() + "_" + quadro + "_" + tom.name();
+        String chave = resId + "_" + animacao.getBloco() + "_" + direcao.name()
+                + "_" + quadro + "_" + tom.name();
 
         Bitmap emCache = cacheQuadros.get(chave);
         if (emCache != null) {
@@ -75,7 +79,7 @@ public final class SpriteLoader {
 
         Bitmap folha = carregarFolha(context, resId);
 
-        int linha = descobrirInicioWalk(folha.getHeight()) + direcao.getLinha();
+        int linha = descobrirLinhaInicial(folha.getHeight(), animacao) + direcao.getLinha();
         int x = quadro * TAMANHO_QUADRO;
         int y = linha * TAMANHO_QUADRO;
 
@@ -155,16 +159,26 @@ public final class SpriteLoader {
         return folha;
     }
 
-    private static int descobrirInicioWalk(int altura) {
+    /**
+     * Descobre em qual linha da folha a animação começa, de acordo com o formato do arquivo.
+     * Os formatos antigos (só walk ou folha completa) continuam aceitos, mas só para andar/parado.
+     */
+    private static int descobrirLinhaInicial(int altura, Animacao animacao) {
         int linhas = altura / TAMANHO_QUADRO;
-        if (linhas == 4) {
-            return INICIO_WALK_ARQUIVO_WALK;
+        if (linhas == LINHAS_FOLHA_DRESS) {
+            return animacao.getLinhaInicial();
         }
-        if (linhas >= 21) {
+
+        boolean ehCaminhada = animacao.getBloco() == Animacao.ANDAR.getBloco();
+        if (linhas == LINHAS_ARQUIVO_WALK && ehCaminhada) {
+            return 0;
+        }
+        if (linhas >= LINHAS_FOLHA_COMPLETA && ehCaminhada) {
             return INICIO_WALK_FOLHA_COMPLETA;
         }
         throw new IllegalArgumentException(
-                "Formato de spritesheet não reconhecido (altura " + altura + "px). "
-                        + "Use o arquivo da animação walk ou a folha completa.");
+                "A folha com altura " + altura + "px não tem a animação " + animacao + ". "
+                        + "Use uma folha de " + (LINHAS_FOLHA_DRESS * TAMANHO_QUADRO)
+                        + "px de altura (andar + correr + sentar).");
     }
 }

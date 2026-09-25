@@ -130,7 +130,7 @@
 
     </LinearLayout>
     
-    <!-- Botões de ação lado a lado: girar e andar -->
+    <!-- Primeira linha de ações: girar e andar -->
     <LinearLayout
         android:id="@+id/painelBotoes"
         android:layout_width="0dp"
@@ -164,6 +164,48 @@
             android:layout_marginStart="8dp"
             android:background="@drawable/bg_madeira"
             android:text="@string/btn_andar"
+            android:fontFamily="@font/medieval"
+            android:textAllCaps="false"
+            android:textColor="@color/pergaminho"
+            android:textSize="22sp"
+            android:textStyle="bold" />
+
+    </LinearLayout>
+
+    <!-- Segunda linha de ações, logo abaixo: correr e sentar (mesmo estilo e tamanho) -->
+    <LinearLayout
+        android:id="@+id/painelBotoes2"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="12dp"
+        android:layout_marginHorizontal="32dp"
+        android:orientation="horizontal"
+        app:layout_constraintTop_toBottomOf="@id/painelBotoes"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent">
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/btnCorrer"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:layout_marginEnd="8dp"
+            android:background="@drawable/bg_madeira"
+            android:text="@string/btn_correr"
+            android:fontFamily="@font/medieval"
+            android:textAllCaps="false"
+            android:textColor="@color/pergaminho"
+            android:textSize="22sp"
+            android:textStyle="bold" />
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/btnSentar"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:layout_marginStart="8dp"
+            android:background="@drawable/bg_madeira"
+            android:text="@string/btn_sentar"
             android:fontFamily="@font/medieval"
             android:textAllCaps="false"
             android:textColor="@color/pergaminho"

@@ -15,7 +15,8 @@ import java.util.List;
 /**
  * Reúne todas as peças disponíveis no jogo e as imagens da base do personagem.
  * Para adicionar uma roupa nova, basta colocar a imagem na drawable-nodpi
- * e criar mais um Item na lista abaixo.
+ * e criar mais um Item na lista abaixo. Cada imagem é uma folha de 576x768 px
+ * com as animações de andar, correr e sentar empilhadas (veja o enum Animacao).
  */
 public final class Catalogo {
 
@@ -42,8 +43,8 @@ public final class Catalogo {
                     R.drawable.calca_pants_m, R.drawable.calca_pants_f),
             new Item("calca_legs", "Legging", Categoria.CALCA,
                     R.drawable.calca_legs_m, R.drawable.calca_legs_f),
-            new Item("calca_armour", "Perneira de armadura", Categoria.CALCA,
-                    R.drawable.calca_armour_m, R.drawable.calca_armour_f),
+            new Item("calca_legion", "Saia de legionário", Categoria.CALCA,
+                    R.drawable.calca_legion_m, R.drawable.calca_legion_f),
 
             // ===== SAPATOS =====
             new Item("pe_shoes", "Sapato", Categoria.SAPATO,

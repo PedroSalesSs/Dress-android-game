@@ -1,6 +1,6 @@
 # ⚔️ Dress: jogo de criação de personagem
 
-Jogo Android **nativo em Java** em que o jogador escolhe um herói e monta o visual dele peça por peça, com cabelo, camisa, calça e calçados, num cenário com estética medieval. O personagem pode ser girado nas quatro direções e anda no lugar com animação quadro a quadro, com todas as roupas acompanhando os movimentos.
+Jogo Android **nativo em Java** em que o jogador escolhe um herói e monta o visual dele peça por peça, com cabelo, camisa, calça e calçados, num cenário com estética medieval. O personagem pode ser girado nas quatro direções e sabe andar, correr e sentar, com animação quadro a quadro e todas as roupas acompanhando os movimentos.
 
 Projeto desenvolvido para a disciplina de **Dispositivos Móveis** do curso de **Sistemas para Internet**.
 
@@ -18,6 +18,9 @@ Projeto desenvolvido para a disciplina de **Dispositivos Móveis** do curso de *
 - **Troca de peças por categoria**: setas para navegar entre cabelos, camisas, calças e calçados, incluindo a opção de não usar nenhuma peça.
 - **Girar**: o personagem vira para frente, esquerda, costas e direita, com todas as camadas acompanhando.
 - **Andar**: animação de caminhada em 8 quadros, que funciona em qualquer direção e continua ao trocar de roupa.
+- **Correr**: corrida em 8 quadros, mais rápida que a caminhada.
+- **Sentar**: o personagem senta de pernas cruzadas e pode ser girado sentado. O botão vira *"Levantar"* para voltar à pose parada.
+- **Troca direta entre animações**: dá para passar de andar para correr (ou sentar) sem parar antes; tocar no botão da animação ativa faz o personagem parar.
 - **Cor do cabelo**: ruivo, castanho, preto e loiro.
 - **Tom de pele**: quatro tons, trocados sem alterar os olhos nem os detalhes do rosto.
 - **Créditos secretos**: na tela inicial, segure o dedo sobre o título *"Escolha seu personagem"*.
@@ -37,11 +40,15 @@ Ao todo, são **milhares de combinações** possíveis de visual.
 
 **Personagem em camadas.** O personagem é formado por seis imagens empilhadas (corpo, cabeça, calça, calçado, camisa e cabelo). Como todos os sprites seguem a mesma grade, as peças se encaixam sem nenhum cálculo de posição.
 
-**Recorte de spritesheets.** Cada peça é uma folha com todos os quadros da animação. A classe `SpriteLoader` recorta o quadro certo de acordo com a direção e o momento da animação, e amplia a pixel art sem suavização para mantê-la nítida.
+**Recorte de spritesheets.** Cada peça é uma única folha de 576x768 px com as três animações empilhadas em blocos de 4 linhas (uma por direção): andar nas linhas 0 a 3, correr nas linhas 4 a 7 e sentar nas linhas 8 a 11. Juntar tudo numa folha só (técnica conhecida como *texture atlas*) evita um arquivo por animação. A classe `SpriteLoader` recorta o quadro certo de acordo com a animação, a direção e o momento da animação, e amplia a pixel art sem suavização para mantê-la nítida.
 
 **Otimização de memória.** Os quadros ficam guardados no tamanho original (64x64) em dois caches: um para as folhas completas, lidas uma única vez, e outro para os recortes já processados. A ampliação acontece apenas na exibição.
 
-**Animação com `Handler`.** A caminhada usa um `Runnable` que avança um quadro e se reagenda a cada 100 ms. A animação é interrompida no `onPause()`, respeitando o ciclo de vida da Activity para não gastar bateria em segundo plano.
+**Animações descritas por um enum.** O enum `Animacao` guarda, para cada animação, em qual bloco da folha ela está, o primeiro quadro, a quantidade de quadros e a velocidade. Assim, a tela não precisa de um código diferente para cada animação: adicionar uma nova é criar mais um valor no enum.
+
+**Animação com `Handler`.** Um único `Runnable` avança um quadro da animação atual e se reagenda no intervalo dela (100 ms ao andar, 70 ms ao correr). A pose de sentar tem um quadro só e nem usa o `Handler`. A animação é interrompida no `onPause()`, respeitando o ciclo de vida da Activity para não gastar bateria em segundo plano.
+
+**Proteção contra peças incompletas.** Cada `Item` pode declarar animações que não possui. Se uma peça vestida não tiver a animação pedida, o botão fica apagado e um aviso explica o motivo, em vez de o personagem aparecer sem a peça.
 
 **Duas técnicas de recoloração.**
 - *Cabelo*: `ColorMatrix` aplicada na `ImageView`, que converte a imagem para tons de cinza e depois tinge com a cor escolhida, preservando luzes e sombras.
@@ -58,10 +65,11 @@ Ao todo, são **milhares de combinações** possíveis de visual.
 ```
 app/src/main/java/com/example/dress/
 ├── EscolhaActivity.java    # Tela inicial: escolha do corpo e créditos
-├── MainActivity.java       # Tela de vestir, girar, andar e recolorir
+├── MainActivity.java       # Tela de vestir, girar, animar e recolorir
 ├── data/
 │   └── Catalogo.java       # Lista de todas as peças do jogo
 ├── model/
+│   ├── Animacao.java       # Parado, andar, correr e sentar
 │   ├── Categoria.java      # Cabelo, camisa, calça e sapato
 │   ├── CorCabelo.java      # Cores de cabelo disponíveis
 │   ├── Direcao.java        # Frente, esquerda, costas e direita
