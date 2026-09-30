@@ -1,6 +1,6 @@
 # Créditos
 
-O jogo **Dress** foi desenvolvido como trabalho da disciplina de Dispositivos Móveis. O código é de autoria própria; as imagens dos personagens, a textura de fundo e a fonte foram criadas por outros artistas e são usadas de acordo com as licenças abertas indicadas abaixo. Muito obrigado a todos os autores por disponibilizarem seus trabalhos.
+O jogo **My Hero** foi desenvolvido como trabalho da disciplina de Dispositivos Móveis. O código é de autoria própria; as imagens dos personagens, a textura de fundo e a fonte foram criadas por outros artistas e são usadas de acordo com as licenças abertas indicadas abaixo. Muito obrigado a todos os autores por disponibilizarem seus trabalhos.
 
 Os créditos também podem ser vistos dentro do app: na tela inicial, segure o dedo sobre o título *"Escolha seu personagem"*.
 

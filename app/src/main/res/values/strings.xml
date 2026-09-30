@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Dress</string>
+    <string name="app_name">My Hero</string>
     <string name="titulo_jogo">My Hero</string>
     <string name="seta_anterior">Peça anterior</string>
     <string name="seta_proxima">Próxima peça</string>

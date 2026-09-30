@@ -1,4 +1,4 @@
-# ⚔️ Dress: jogo de criação de personagem
+# ⚔️ My Hero: crie seu herói e enfrente monstros
 
 Jogo Android **nativo em Java** em que o jogador escolhe um herói e monta o visual dele peça por peça, com cabelo, camisa, calça e calçados, num cenário com estética medieval. O personagem pode ser girado nas quatro direções e sabe andar, correr e sentar, com animação quadro a quadro e todas as roupas acompanhando os movimentos. Depois de vestido, o herói pode enfrentar monstros numa **batalha por turnos**.
 
@@ -99,7 +99,7 @@ app/src/test/java/com/example/dress/model/
 
 1. Clone o repositório:
    ```
-   git clone https://github.com/PedroSalesSs/Dress-android-game.git
+   git clone https://github.com/PedroSalesSs/MyHero-android-game.git
    ```
 2. Abra a pasta do projeto no **Android Studio** e aguarde a sincronização do Gradle.
 3. Execute em um emulador ou celular com **Android 7.0 ou superior**, pelo botão ▶ (*Run*).
