@@ -27,8 +27,16 @@ public final class SpriteLoader {
     /** Quadro 0 da animação walk: o personagem parado. */
     public static final int QUADRO_PARADO = 0;
 
+    /**
+     * Quadros da batalha: 128 x 64 px. A largura extra deixa espaço para a arma
+     * durante o golpe. O herói fica na metade esquerda do quadro (a espada vai para a direita)
+     * e os inimigos, na metade direita (a arma vai para a esquerda).
+     */
+    public static final int LARGURA_QUADRO_BATALHA = 128;
+    public static final int ALTURA_QUADRO_BATALHA = 64;
+
     // Formatos de arquivo aceitos, identificados pela quantidade de linhas de 64 px
-    private static final int LINHAS_FOLHA_DRESS = 12;  // andar + correr + sentar (formato do jogo)
+    private static final int LINHAS_FOLHA_DRESS = 17;  // andar + correr + sentar + atacar + derrota
     private static final int LINHAS_ARQUIVO_WALK = 4;  // arquivo só com walk
     private static final int LINHAS_FOLHA_COMPLETA = 21; // folha completa antiga do LPC
     private static final int INICIO_WALK_FOLHA_COMPLETA = 8; // na folha completa, walk começa na linha 8
@@ -79,7 +87,9 @@ public final class SpriteLoader {
 
         Bitmap folha = carregarFolha(context, resId);
 
-        int linha = descobrirLinhaInicial(folha.getHeight(), animacao) + direcao.getLinha();
+        // A derrota tem uma linha só; nas outras animações, cada direção tem a sua linha
+        int linhaDirecao = animacao.isDirecional() ? direcao.getLinha() : 0;
+        int linha = descobrirLinhaInicial(folha.getHeight(), animacao) + linhaDirecao;
         int x = quadro * TAMANHO_QUADRO;
         int y = linha * TAMANHO_QUADRO;
 
@@ -179,6 +189,40 @@ public final class SpriteLoader {
         throw new IllegalArgumentException(
                 "A folha com altura " + altura + "px não tem a animação " + animacao + ". "
                         + "Use uma folha de " + (LINHAS_FOLHA_DRESS * TAMANHO_QUADRO)
-                        + "px de altura (andar + correr + sentar).");
+                        + "px de altura (andar + correr + sentar + atacar + derrota).");
+    }
+
+    // ===================================================================== batalha
+
+    /**
+     * Recorta um quadro de 128 x 64 das folhas usadas na batalha (inimigos e espada).
+     * Nessas folhas, cada linha é uma animação e cada coluna é um quadro.
+     */
+    public static Bitmap carregarQuadroBatalha(Context context, @DrawableRes int resId,
+                                               int linha, int coluna) {
+        String chave = "batalha_" + resId + "_" + linha + "_" + coluna;
+
+        Bitmap emCache = cacheQuadros.get(chave);
+        if (emCache != null) {
+            return emCache;
+        }
+
+        Bitmap folha = carregarFolha(context, resId);
+        Bitmap resultado = Bitmap.createBitmap(folha,
+                coluna * LARGURA_QUADRO_BATALHA, linha * ALTURA_QUADRO_BATALHA,
+                LARGURA_QUADRO_BATALHA, ALTURA_QUADRO_BATALHA);
+
+        cacheQuadros.put(chave, resultado);
+        return resultado;
+    }
+
+    /**
+     * Retrato do inimigo para a janela de escolha: o primeiro quadro parado,
+     * só a metade direita (onde o inimigo fica), no tamanho normal de 64 x 64.
+     */
+    public static Bitmap carregarRetratoInimigo(Context context, @DrawableRes int resId) {
+        Bitmap quadro = carregarQuadroBatalha(context, resId, 0, 0);
+        int inicioPersonagem = LARGURA_QUADRO_BATALHA - TAMANHO_QUADRO;
+        return Bitmap.createBitmap(quadro, inicioPersonagem, 0, TAMANHO_QUADRO, TAMANHO_QUADRO);
     }
 }

@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Barra de vida: trilho de madeira escura e o preenchimento colorido por cima.
+     A cor do preenchimento é trocada pelo código conforme a vida diminui. -->
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <!-- Trilho (a parte vazia da barra) -->
+    <item android:id="@android:id/background">
+        <shape android:shape="rectangle">
+            <solid android:color="@color/madeira_escura" />
+            <corners android:radius="4dp" />
+        </shape>
+    </item>
+
+    <!-- Preenchimento: o clip corta a imagem de acordo com o progresso -->
+    <item android:id="@android:id/progress">
+        <clip>
+            <shape android:shape="rectangle">
+                <solid android:color="#FFFFFF" />
+                <stroke
+                    android:width="2dp"
+                    android:color="@color/madeira_escura" />
+                <corners android:radius="4dp" />
+            </shape>
+        </clip>
+    </item>
+
+</layer-list>

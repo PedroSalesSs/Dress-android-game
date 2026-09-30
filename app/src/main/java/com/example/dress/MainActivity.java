@@ -1,9 +1,7 @@
 package com.example.dress;
 
+import android.content.Intent;
 import android.content.res.ColorStateList;
-import android.graphics.Color;
-import android.graphics.ColorMatrix;
-import android.graphics.ColorMatrixColorFilter;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Looper;
@@ -13,6 +11,7 @@ import android.widget.Toast;
 
 import androidx.activity.EdgeToEdge;
 import androidx.annotation.DrawableRes;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
@@ -21,15 +20,19 @@ import androidx.core.widget.ImageViewCompat;
 
 import com.example.dress.data.Catalogo;
 import com.example.dress.databinding.ActivityMainBinding;
+import com.example.dress.databinding.DialogoInimigosBinding;
+import com.example.dress.databinding.ItemInimigoBinding;
 import com.example.dress.databinding.LinhaCategoriaBinding;
 import com.example.dress.model.Animacao;
 import com.example.dress.model.Categoria;
 import com.example.dress.model.CorCabelo;
 import com.example.dress.model.Direcao;
+import com.example.dress.model.Inimigo;
 import com.example.dress.model.Item;
 import com.example.dress.model.Personagem;
 import com.example.dress.model.TipoCorpo;
 import com.example.dress.model.TomPele;
+import com.example.dress.util.FiltroCabelo;
 import com.example.dress.util.SpriteLoader;
 
 import java.util.List;
@@ -38,12 +41,6 @@ public class MainActivity extends AppCompatActivity {
 
     /** Chave usada pela tela de escolha para enviar o tipo de corpo para esta tela. */
     public static final String EXTRA_TIPO_CORPO = "tipo_corpo";
-
-    /**
-     * Quanto o tom de cinza do cabelo é "clareado" antes de ser tingido.
-     * Valores maiores deixam as cores mais claras e vivas.
-     */
-    private static final float INTENSIDADE_TINTA = 1.5f;
 
     private ActivityMainBinding binding;
     private Personagem personagem;
@@ -101,6 +98,9 @@ public class MainActivity extends AppCompatActivity {
         binding.btnCorrer.setOnClickListener(v -> alternarAnimacao(Animacao.CORRER));
         binding.btnSentar.setOnClickListener(v -> alternarAnimacao(Animacao.SENTAR));
 
+        // Abre a janela para escolher contra qual inimigo lutar
+        binding.btnBatalha.setOnClickListener(v -> escolherInimigo());
+
         // Fecha esta tela e volta para a tela de escolha (que está embaixo na pilha)
         binding.btnVoltar.setOnClickListener(v -> finish());
 
@@ -141,7 +141,7 @@ public class MainActivity extends AppCompatActivity {
      */
     private void aplicarCorCabelo() {
         if (corCabelo.precisaTingir()) {
-            binding.imgCabelo.setColorFilter(criarFiltroDeCor(corCabelo.getCor()));
+            binding.imgCabelo.setColorFilter(FiltroCabelo.criar(corCabelo.getCor()));
         } else {
             binding.imgCabelo.clearColorFilter();  // cor original do sprite
         }
@@ -153,22 +153,63 @@ public class MainActivity extends AppCompatActivity {
     }
 
     /**
-     * Cria um filtro que primeiro deixa a imagem em tons de cinza (mantendo
-     * luzes e sombras do desenho) e depois tinge esse cinza com a cor escolhida.
+     * Mostra a janela de escolha do inimigo, com um cartão para cada valor do enum Inimigo.
+     * Os cartões são criados pelo código: para adicionar um inimigo novo ao jogo,
+     * não é preciso mexer no layout da janela.
      */
-    private ColorMatrixColorFilter criarFiltroDeCor(int cor) {
-        float r = Color.red(cor) / 255f * INTENSIDADE_TINTA;
-        float g = Color.green(cor) / 255f * INTENSIDADE_TINTA;
-        float b = Color.blue(cor) / 255f * INTENSIDADE_TINTA;
+    private void escolherInimigo() {
+        DialogoInimigosBinding dialogo = DialogoInimigosBinding.inflate(getLayoutInflater());
+        AlertDialog janela = new AlertDialog.Builder(this)
+                .setView(dialogo.getRoot())
+                .create();
 
-        ColorMatrix matriz = new ColorMatrix();
-        matriz.setSaturation(0);            // 1) tira a cor: vira tons de cinza
+        for (Inimigo inimigo : Inimigo.values()) {
+            // O "true" já coloca o cartão dentro da lista
+            ItemInimigoBinding cartao =
+                    ItemInimigoBinding.inflate(getLayoutInflater(), dialogo.listaInimigos, true);
 
-        ColorMatrix tinta = new ColorMatrix();
-        tinta.setScale(r, g, b, 1f);        // 2) multiplica o cinza pela cor
-        matriz.postConcat(tinta);           // junta as duas operações numa só
+            cartao.imgInimigo.setImageBitmap(
+                    SpriteLoader.carregarRetratoInimigo(this, Catalogo.getImagemInimigo(inimigo)));
+            cartao.imgInimigo.getDrawable().setFilterBitmap(false);
+            cartao.txtNome.setText(inimigo.getNome());
+            cartao.txtDescricao.setText(getString(R.string.ficha_inimigo,
+                    inimigo.getNomeAtaque(), inimigo.getVidaMaxima(),
+                    inimigo.getDanoMinimo(), inimigo.getDanoMaximo()));
 
-        return new ColorMatrixColorFilter(matriz);
+            cartao.getRoot().setOnClickListener(v -> {
+                janela.dismiss();
+                abrirBatalha(inimigo);
+            });
+        }
+
+        dialogo.btnCancelar.setOnClickListener(v -> janela.dismiss());
+
+        // Fundo transparente: quem desenha a janela é o nosso pergaminho, não o tema padrão
+        if (janela.getWindow() != null) {
+            janela.getWindow().setBackgroundDrawableResource(android.R.color.transparent);
+        }
+        janela.show();
+    }
+
+    /**
+     * Abre a tela de batalha levando o personagem como está: corpo, peças,
+     * cor do cabelo e tom de pele. Assim o herói luta com a roupa que o jogador montou.
+     * As peças vão pelo id (um texto), porque o Intent não carrega objetos Item.
+     */
+    private void abrirBatalha(Inimigo inimigo) {
+        Intent intent = new Intent(this, BatalhaActivity.class);
+        intent.putExtra(BatalhaActivity.EXTRA_INIMIGO, inimigo.name());
+        intent.putExtra(BatalhaActivity.EXTRA_TIPO_CORPO, personagem.getTipoCorpo().name());
+        intent.putExtra(BatalhaActivity.EXTRA_COR_CABELO, corCabelo.name());
+        intent.putExtra(BatalhaActivity.EXTRA_TOM_PELE, tomPele.name());
+
+        for (Categoria categoria : Categoria.values()) {
+            Item item = personagem.getEquipado(categoria);
+            if (item != null) {
+                intent.putExtra(BatalhaActivity.extraDaPeca(categoria), item.getId());
+            }
+        }
+        startActivity(intent);
     }
 
     /**

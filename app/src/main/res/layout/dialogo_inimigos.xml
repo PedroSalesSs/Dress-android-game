@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Janela de escolha do inimigo: um pergaminho com o título, um cartão por inimigo
+     (os cartões são criados pelo código, a partir do enum Inimigo) e o botão de cancelar. -->
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:padding="16dp"
+    android:background="@drawable/bg_pergaminho"
+    android:orientation="vertical">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:text="@string/titulo_escolha_inimigo"
+        android:fontFamily="@font/medieval"
+        android:textColor="@color/tinta"
+        android:textSize="26sp"
+        android:textStyle="bold" />
+
+    <!-- Os cartões dos inimigos entram aqui -->
+    <LinearLayout
+        android:id="@+id/listaInimigos"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:orientation="vertical" />
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/btnCancelar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="8dp"
+        android:paddingHorizontal="32dp"
+        android:background="@drawable/bg_madeira"
+        android:text="@string/cancelar"
+        android:fontFamily="@font/medieval"
+        android:textAllCaps="false"
+        android:textColor="@color/pergaminho"
+        android:textSize="20sp"
+        android:textStyle="bold" />
+
+</LinearLayout>

@@ -1,5 +1,6 @@
 <resources>
     <string name="app_name">Dress</string>
+    <string name="titulo_jogo">My Hero</string>
     <string name="seta_anterior">Peça anterior</string>
     <string name="seta_proxima">Próxima peça</string>
     <string name="btn_animar">Girar</string>
@@ -8,10 +9,9 @@
     <string name="opcao_masculino">Masculino</string>
     <string name="opcao_feminino">Feminino</string>
     <string name="btn_voltar">Voltar à escolha de personagem</string>
-    <string name="subtitulo_escolha">Toque em um herói para começar</string>
     <string name="creditos_titulo">Créditos</string>
     <string name="fechar">Fechar</string>
-    <string name="creditos_texto">Personagens e roupas:\nUniversal LPC Spritesheet Character Generator (Liberated Pixel Cup), diversos autores. Licenças abertas: CC-BY-SA, GPL, OGA-BY e CC0. Lista completa de autores no arquivo CREDITOS.md do projeto.\n\nTextura de pedra:\n\"stone wall 4\", por West (OpenGameArt.org). Licença CC0.\n\nFonte:\nMedievalSharp, por Wojciech Kalinowski. Licença SIL Open Font License.</string>
+    <string name="creditos_texto">Personagens, roupas, inimigos e armas:\nUniversal LPC Spritesheet Character Generator (Liberated Pixel Cup), diversos autores. Licenças abertas: CC-BY-SA, GPL, OGA-BY e CC0. Lista completa de autores no arquivo CREDITOS.md do projeto.\n\nTextura de pedra:\n\"stone wall 4\", por West (OpenGameArt.org). Licença CC0.\n\nFonte:\nMedievalSharp, por Wojciech Kalinowski. Licença SIL Open Font License.</string>
     <string name="btn_andar">Andar</string>
     <string name="btn_parar">Parar</string>
     <string name="btn_correr">Correr</string>
@@ -21,4 +21,34 @@
     <string name="aviso_sem_animacao">A peça \"%1$s\" não tem essa animação. Troque-a para usar este botão.</string>
     <string name="btn_cor_cabelo">Mudar a cor do cabelo</string>
     <string name="btn_tom_pele">Mudar o tom de pele</string>
+
+    <!-- Batalha: escolha do inimigo -->
+    <string name="btn_batalha">Batalha</string>
+    <string name="titulo_escolha_inimigo">Escolha seu inimigo</string>
+    <string name="cancelar">Cancelar</string>
+    <string name="descricao_img_inimigo">Inimigo</string>
+    <!-- %1$s = nome do ataque, %2$d = vida, %3$d e %4$d = dano mínimo e máximo -->
+    <string name="ficha_inimigo">%1$s · Vida %2$d · Dano %3$d–%4$d</string>
+
+    <!-- Batalha: combate -->
+    <string name="nome_heroi">Herói</string>
+    <string name="btn_atacar">Atacar</string>
+    <string name="btn_defender">Defender</string>
+    <!-- %1$d = vida atual, %2$d = vida máxima -->
+    <string name="vida_valor">%1$d / %2$d</string>
+    <string name="msg_inicio">Um %1$s apareceu! O que você vai fazer?</string>
+    <string name="msg_sua_vez">Sua vez!</string>
+    <string name="msg_heroi_ataca">Você golpeia com a espada!</string>
+    <string name="msg_dano_causado">Acertou! %1$d de dano no %2$s.</string>
+    <string name="msg_heroi_defende">Você ergue a guarda e espera o golpe…</string>
+    <string name="msg_inimigo_ataca">O %1$s usa %2$s!</string>
+    <string name="msg_dano_recebido">Você recebeu %1$d de dano.</string>
+    <string name="msg_dano_defendido">Você defendeu! Recebeu só %1$d de dano.</string>
+
+    <!-- Batalha: resultado -->
+    <string name="resultado_vitoria">Vitória!</string>
+    <string name="resultado_derrota">Derrota…</string>
+    <string name="texto_vitoria">Você derrotou o %1$s!</string>
+    <string name="texto_derrota">O %1$s venceu desta vez. Tente de novo!</string>
+    <string name="btn_voltar_menu">Voltar ao menu</string>
 </resources>

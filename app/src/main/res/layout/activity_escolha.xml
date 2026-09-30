@@ -9,12 +9,49 @@
     android:background="@drawable/fundo_pedra_repetido"
     tools:context=".EscolhaActivity">
 
-    <!-- Título numa placa de madeira, como um letreiro -->
+    <!-- Nome do jogo numa faixa de madeira: as bandeirolas ficam atrás
+         e a placa com o nome, por cima, cobrindo o meio delas -->
+    <FrameLayout
+        android:id="@+id/faixaTitulo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="32dp"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent">
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:scaleType="fitXY"
+            android:src="@drawable/ic_bandeirolas"
+            android:importantForAccessibility="no" />
+
+        <TextView
+            android:id="@+id/txtNomeJogo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="40dp"
+            android:paddingHorizontal="36dp"
+            android:paddingVertical="6dp"
+            android:background="@drawable/bg_placa_titulo"
+            android:text="@string/titulo_jogo"
+            android:fontFamily="@font/medieval"
+            android:textColor="@color/dourado"
+            android:textSize="60sp"
+            android:shadowColor="#000000"
+            android:shadowDx="3"
+            android:shadowDy="3"
+            android:shadowRadius="4" />
+    </FrameLayout>
+
+    <!-- Instrução numa placa de madeira, como um letreiro.
+         Segurar o dedo sobre ela abre os créditos. -->
     <TextView
         android:id="@+id/txtTitulo"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="48dp"
+        android:layout_marginTop="28dp"
         android:paddingHorizontal="28dp"
         android:paddingVertical="10dp"
         android:background="@drawable/bg_madeira"
@@ -26,25 +63,7 @@
         android:shadowDx="2"
         android:shadowDy="2"
         android:shadowRadius="3"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent" />
-
-    <!-- Subtítulo com instrução para o jogador -->
-    <TextView
-        android:id="@+id/txtSubtitulo"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="12dp"
-        android:text="@string/subtitulo_escolha"
-        android:fontFamily="@font/medieval"
-        android:textColor="@color/pergaminho"
-        android:textSize="18sp"
-        android:shadowColor="#000000"
-        android:shadowDx="2"
-        android:shadowDy="2"
-        android:shadowRadius="4"
-        app:layout_constraintTop_toBottomOf="@id/txtTitulo"
+        app:layout_constraintTop_toBottomOf="@id/faixaTitulo"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent" />
 
@@ -55,7 +74,7 @@
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="16dp"
         android:orientation="horizontal"
-        app:layout_constraintTop_toBottomOf="@id/txtSubtitulo"
+        app:layout_constraintTop_toBottomOf="@id/txtTitulo"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent">

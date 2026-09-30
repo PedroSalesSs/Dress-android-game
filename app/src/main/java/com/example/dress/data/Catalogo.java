@@ -4,6 +4,7 @@ import androidx.annotation.DrawableRes;
 
 import com.example.dress.R;
 import com.example.dress.model.Categoria;
+import com.example.dress.model.Inimigo;
 import com.example.dress.model.Item;
 import com.example.dress.model.TipoCorpo;
 
@@ -15,8 +16,8 @@ import java.util.List;
 /**
  * Reúne todas as peças disponíveis no jogo e as imagens da base do personagem.
  * Para adicionar uma roupa nova, basta colocar a imagem na drawable-nodpi
- * e criar mais um Item na lista abaixo. Cada imagem é uma folha de 576x768 px
- * com as animações de andar, correr e sentar empilhadas (veja o enum Animacao).
+ * e criar mais um Item na lista abaixo. Cada imagem é uma folha de 576x1088 px
+ * com as animações de andar, correr, sentar, atacar e derrota empilhadas (veja o enum Animacao).
  */
 public final class Catalogo {
 
@@ -94,5 +95,27 @@ public final class Catalogo {
     @DrawableRes
     public static int getImagemCabeca(TipoCorpo corpo) {
         return corpo == TipoCorpo.MASCULINO ? R.drawable.cabeca_m : R.drawable.cabeca_f;
+    }
+
+    // ===== BATALHA =====
+
+    /** Espada do herói. Linhas: parado, ataque e derrota, cada uma com a parte de trás e a da frente. */
+    @DrawableRes
+    public static int getImagemEspada() {
+        return R.drawable.arma_espada;
+    }
+
+    /**
+     * Folha de batalha de cada inimigo (quadros de 128 x 64, virados para a esquerda).
+     * Linha 0 = parado (2 quadros), linha 1 = ataque, linha 2 = derrota (6 quadros).
+     */
+    @DrawableRes
+    public static int getImagemInimigo(Inimigo inimigo) {
+        switch (inimigo) {
+            case ESQUELETO: return R.drawable.inimigo_esqueleto;
+            case LOBISOMEM: return R.drawable.inimigo_lobisomem;
+            case ORC:
+            default:        return R.drawable.inimigo_orc;
+        }
     }
 }

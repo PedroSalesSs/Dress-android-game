@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Pontas da faixa do título: duas bandeirolas de madeira, uma de cada lado.
+     Fica atrás da placa (bg_placa_titulo), que cobre o meio; só as pontas aparecem.
+     A imagem é esticada para a largura da faixa (scaleType fitXY). -->
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="400dp"
+    android:height="100dp"
+    android:viewportWidth="400"
+    android:viewportHeight="100">
+
+    <!-- Bandeirola esquerda: retângulo com um corte em "V" na ponta -->
+    <path
+        android:fillColor="@color/madeira"
+        android:strokeColor="@color/madeira_escura"
+        android:strokeWidth="3"
+        android:strokeLineJoin="round"
+        android:pathData="M80,18 L2,18 L20,55 L2,92 L80,92 Z" />
+
+    <!-- Bandeirola direita (espelhada) -->
+    <path
+        android:fillColor="@color/madeira"
+        android:strokeColor="@color/madeira_escura"
+        android:strokeWidth="3"
+        android:strokeLineJoin="round"
+        android:pathData="M320,18 L398,18 L380,55 L398,92 L320,92 Z" />
+
+</vector>

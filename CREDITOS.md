@@ -8,7 +8,7 @@ Os créditos também podem ser vistos dentro do app: na tela inicial, segure o d
 
 | Recurso | Fonte | Licença |
 |---|---|---|
-| Personagens, cabelos e roupas | Universal LPC Spritesheet Character Generator (Liberated Pixel Cup) | OGA-BY 3.0, CC-BY-SA 3.0, GPL 3.0, CC0, GPL 2.0 (varia por peça, detalhado abaixo) |
+| Personagens, cabelos, roupas, inimigos e armas | Universal LPC Spritesheet Character Generator (Liberated Pixel Cup) | OGA-BY 3.0, CC-BY-SA 3.0, GPL 3.0, CC0, GPL 2.0 (varia por peça, detalhado abaixo) |
 | Textura de pedra do fundo | "stone wall 4", por West (OpenGameArt.org) | CC0 (domínio público) |
 | Fonte MedievalSharp | Wojciech Kalinowski (Google Fonts) | SIL Open Font License 1.1 |
 
@@ -19,11 +19,11 @@ Todos os sprites vêm do **Universal LPC Spritesheet Character Generator**:
 - Repositório: https://github.com/LiberatedPixelCup/Universal-LPC-Spritesheet-Character-Generator
 - Gerador online: https://liberatedpixelcup.github.io/Universal-LPC-Spritesheet-Character-Generator/
 
-Para cada peça foram usados os arquivos `walk.png`, `run.png` e `sit.png`, juntados pelo projeto numa única folha (andar, correr e sentar, nessa ordem). Os arquivos estão em `app/src/main/res/drawable-nodpi` com os nomes indicados entre parênteses. As versões femininas de calças e calçados vêm das pastas `thin`, que é o formato de perna usado pelo corpo feminino no LPC. As imagens foram modificadas em tempo de execução pelo app (recorte de quadros, ampliação, troca da cor do cabelo e do tom de pele).
+Para cada peça foram usados os arquivos `walk.png`, `run.png`, `sit.png`, `slash.png` e `hurt.png`, juntados pelo projeto numa única folha (andar, correr, sentar, atacar e derrota, nessa ordem). Os arquivos estão em `app/src/main/res/drawable-nodpi` com os nomes indicados entre parênteses. As versões femininas de calças e calçados vêm das pastas `thin`, que é o formato de perna usado pelo corpo feminino no LPC. As imagens foram modificadas em tempo de execução pelo app (recorte de quadros, ampliação, troca da cor do cabelo e do tom de pele).
 
 ### Todos os autores dos sprites usados
 
-bluecarrot16, JaidynReiman, Benjamin K. Smith (BenCreating), Evert, Eliza Wyatt (ElizaWy), TheraHedwig, MuffinElZangano, Durrani, Johannes Sjölund (wulax), Stephen Challener (Redshrike), Pierre Vigier (pvigier), ElizaWy, Matthew Krohn (makrohn), Manuel Riecke (MrBeast), thecilekli, Napsio (Vitruvian Studio), Michael Whitlock (bigbeargames), Joe White, Mandi Paugh, William.Thompsonj, Nila122
+bluecarrot16, JaidynReiman, Benjamin K. Smith (BenCreating), Evert, Eliza Wyatt (ElizaWy), TheraHedwig, MuffinElZangano, Durrani, Johannes Sjölund (wulax), Stephen Challener (Redshrike), Pierre Vigier (pvigier), ElizaWy, Matthew Krohn (makrohn), Manuel Riecke (MrBeast), thecilekli, Napsio (Vitruvian Studio), Michael Whitlock (bigbeargames), Joe White, Mandi Paugh, William.Thompsonj, Nila122, Napsio, Zi Ye, Sander Frenken (castelonia), Inboxninja
 
 ### Base do personagem
 
@@ -334,6 +334,73 @@ bluecarrot16, JaidynReiman, Benjamin K. Smith (BenCreating), Evert, Eliza Wyatt 
 - Links:
   - https://opengameart.org/content/lpc-medieval-fantasy-character-sprites
 - Observações: original by wulax, recolors by bigbeargames, edits for v3 base and recolors by bluecarrot16
+
+### Batalha
+
+Os inimigos e a espada foram montados pelo projeto a partir de várias camadas do LPC (corpo, cabeça e arma), já virados para o lado da luta e recortados em quadros de 128x64 px. Cada folha tem três linhas: parado, ataque e derrota. No orc e no lobisomem, o corpo humano foi pintado com a cor da cabeça do monstro.
+
+**Espada longa do herói** (`arma_espada.png`)
+
+- Origem no LPC: `spritesheets/weapon/sword/longsword/`
+- Autores: Johannes Sjölund (wulax), bluecarrot16
+- Licenças: OGA-BY 3.0, CC-BY-SA 3.0
+- Links:
+  - https://opengameart.org/content/lpc-medieval-fantasy-character-sprites
+  - https://opengameart.org/content/lpc-extended-weapon-animations
+- Observações: partes de trás e da frente da espada nas animações de parado, golpe (attack_slash) e derrota (hurt)
+
+**Orc** (`inimigo_orc.png`)
+
+- Origem no LPC: `spritesheets/body/bodies/male/`, `spritesheets/head/heads/orc/male/`, `spritesheets/weapon/blunt/waraxe/`
+- Autores: bluecarrot16, JaidynReiman, Benjamin K. Smith (BenCreating), Evert, Eliza Wyatt (ElizaWy), TheraHedwig, MuffinElZangano, Durrani, Johannes Sjölund (wulax), Stephen Challener (Redshrike), Matthew Krohn (makrohn), Zi Ye, Sander Frenken (castelonia)
+- Licenças: OGA-BY 3.0, CC-BY-SA 3.0, GPL 3.0
+- Links:
+  - https://opengameart.org/content/liberated-pixel-cup-lpc-base-assets-sprites-map-tiles
+  - https://opengameart.org/content/lpc-medieval-fantasy-character-sprites
+  - https://opengameart.org/content/lpc-male-jumping-animation-by-durrani
+  - https://opengameart.org/content/lpc-runcycle-and-diagonal-walkcycle
+  - https://opengameart.org/content/lpc-revised-character-basics
+  - https://opengameart.org/content/lpc-be-seated
+  - https://opengameart.org/content/lpc-runcycle-for-male-muscular-and-pregnant-character-bases-with-modular-heads
+  - https://opengameart.org/content/lpc-jump-expanded
+  - https://opengameart.org/content/lpc-character-bases
+  - https://opengameart.org/content/four-characters-my-lpc-entries
+  - https://opengameart.org/content/sinbad-the-ogre
+  - https://opengameart.org/content/lpc-male-sheets
+  - https://opengameart.org/content/lpc-medieval-weapons
+- Observações: corpo masculino pintado de verde + cabeça de orc + machado de guerra (idle, slash e hurt)
+
+**Esqueleto** (`inimigo_esqueleto.png`)
+
+- Origem no LPC: `spritesheets/body/bodies/skeleton/`, `spritesheets/head/heads/skeleton/adult/`, `spritesheets/weapon/polearm/spear/`
+- Autores: bluecarrot16, Napsio, JaidynReiman, Johannes Sjölund (wulax), Stephen Challener (Redshrike), Pierre Vigier (pvigier), Inboxninja
+- Licenças: OGA-BY 3.0, CC-BY-SA 3.0, GPL 3.0
+- Links:
+  - https://opengameart.org/content/liberated-pixel-cup-lpc-base-assets-sprites-map-tiles
+  - https://opengameart.org/content/lpc-medieval-fantasy-character-sprites
+  - https://opengameart.org/content/lpc-skeleton
+  - https://opengameart.org/content/lpc-character-bases
+  - https://opengameart.org/content/lpc-spear-and-shovel-reworked
+- Observações: corpo e cabeça de esqueleto + lança (idle, thrust e hurt)
+
+**Lobisomem** (`inimigo_lobisomem.png`)
+
+- Origem no LPC: `spritesheets/body/bodies/male/`, `spritesheets/head/heads/wolf/male/`
+- Autores: bluecarrot16, JaidynReiman, Benjamin K. Smith (BenCreating), Evert, Eliza Wyatt (ElizaWy), TheraHedwig, MuffinElZangano, Durrani, Johannes Sjölund (wulax), Stephen Challener (Redshrike), Sander Frenken (castelonia), William.Thompsonj
+- Licenças: OGA-BY 3.0, CC-BY-SA 3.0, GPL 3.0
+- Links:
+  - https://opengameart.org/content/liberated-pixel-cup-lpc-base-assets-sprites-map-tiles
+  - https://opengameart.org/content/lpc-medieval-fantasy-character-sprites
+  - https://opengameart.org/content/lpc-male-jumping-animation-by-durrani
+  - https://opengameart.org/content/lpc-runcycle-and-diagonal-walkcycle
+  - https://opengameart.org/content/lpc-revised-character-basics
+  - https://opengameart.org/content/lpc-be-seated
+  - https://opengameart.org/content/lpc-runcycle-for-male-muscular-and-pregnant-character-bases-with-modular-heads
+  - https://opengameart.org/content/lpc-jump-expanded
+  - https://opengameart.org/content/lpc-character-bases
+  - https://opengameart.org/content/lpc-wolf-animation
+  - https://opengameart.org/content/lpc-wolfman
+- Observações: corpo masculino pintado de marrom + cabeça de lobo, atacando sem arma (idle, slash e hurt)
 
 ## Textura de pedra do fundo
 

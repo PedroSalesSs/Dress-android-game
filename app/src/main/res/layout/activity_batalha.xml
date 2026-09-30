@@ -1,0 +1,273 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Tela de batalha, sempre deitada (paisagem).
+     Em cima: vida do herói e do inimigo. No meio: a arena com os dois lutadores.
+     Embaixo: a caixa de mensagens e os botões de ação.
+     Por cima de tudo, escondido até o fim da luta: o painel com o resultado. -->
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/fundo_pedra_repetido"
+    tools:context=".BatalhaActivity">
+
+    <!-- Linha invisível no meio da tela, para dividir os painéis de vida -->
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guiaCentro"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.5" />
+
+    <!-- Vida do herói (esquerda) -->
+    <LinearLayout
+        android:id="@+id/painelHeroi"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="12dp"
+        android:layout_marginEnd="8dp"
+        android:paddingHorizontal="12dp"
+        android:paddingVertical="6dp"
+        android:background="@drawable/bg_pergaminho"
+        android:orientation="vertical"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toStartOf="@id/guiaCentro">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/nome_heroi"
+            android:fontFamily="@font/medieval"
+            android:textColor="@color/tinta"
+            android:textSize="18sp"
+            android:textStyle="bold" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
+
+            <ProgressBar
+                android:id="@+id/barraVidaHeroi"
+                style="?android:attr/progressBarStyleHorizontal"
+                android:layout_width="0dp"
+                android:layout_height="16dp"
+                android:layout_weight="1"
+                android:progressDrawable="@drawable/barra_vida" />
+
+            <TextView
+                android:id="@+id/txtVidaHeroi"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
+                android:minWidth="72dp"
+                android:gravity="end"
+                android:fontFamily="@font/medieval"
+                android:textColor="@color/tinta"
+                android:textSize="16sp" />
+        </LinearLayout>
+    </LinearLayout>
+
+    <!-- Vida do inimigo (direita) -->
+    <LinearLayout
+        android:id="@+id/painelInimigo"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="12dp"
+        android:layout_marginEnd="16dp"
+        android:paddingHorizontal="12dp"
+        android:paddingVertical="6dp"
+        android:background="@drawable/bg_pergaminho"
+        android:orientation="vertical"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toEndOf="@id/guiaCentro"
+        app:layout_constraintEnd_toEndOf="parent">
+
+        <TextView
+            android:id="@+id/txtNomeInimigo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/medieval"
+            android:textColor="@color/tinta"
+            android:textSize="18sp"
+            android:textStyle="bold" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
+
+            <ProgressBar
+                android:id="@+id/barraVidaInimigo"
+                style="?android:attr/progressBarStyleHorizontal"
+                android:layout_width="0dp"
+                android:layout_height="16dp"
+                android:layout_weight="1"
+                android:progressDrawable="@drawable/barra_vida" />
+
+            <TextView
+                android:id="@+id/txtVidaInimigo"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
+                android:minWidth="72dp"
+                android:gravity="end"
+                android:fontFamily="@font/medieval"
+                android:textColor="@color/tinta"
+                android:textSize="16sp" />
+        </LinearLayout>
+    </LinearLayout>
+
+    <!-- Arena: a mesma moldura de madeira da tela de vestir.
+         Cada lutador ocupa metade; os quadros têm espaço sobrando para o golpe da arma. -->
+    <LinearLayout
+        android:id="@+id/arena"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginHorizontal="16dp"
+        android:layout_marginVertical="10dp"
+        android:padding="14dp"
+        android:background="@drawable/bg_moldura"
+        android:orientation="horizontal"
+        app:layout_constraintTop_toBottomOf="@id/painelHeroi"
+        app:layout_constraintBottom_toTopOf="@id/painelAcoes"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent">
+
+        <ImageView
+            android:id="@+id/imgHeroi"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:scaleType="fitCenter"
+            android:contentDescription="@string/nome_heroi" />
+
+        <ImageView
+            android:id="@+id/imgInimigo"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:scaleType="fitCenter"
+            android:contentDescription="@string/descricao_img_inimigo" />
+    </LinearLayout>
+
+    <!-- Caixa de mensagens e botões de ação, lado a lado -->
+    <LinearLayout
+        android:id="@+id/painelAcoes"
+        android:layout_width="0dp"
+        android:layout_height="56dp"
+        android:layout_marginHorizontal="16dp"
+        android:layout_marginBottom="12dp"
+        android:orientation="horizontal"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent">
+
+        <TextView
+            android:id="@+id/txtMensagem"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:paddingHorizontal="16dp"
+            android:gravity="center_vertical"
+            android:background="@drawable/bg_pergaminho"
+            android:fontFamily="@font/medieval"
+            android:textColor="@color/tinta"
+            android:textSize="18sp" />
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/btnAtacar"
+            android:layout_width="150dp"
+            android:layout_height="match_parent"
+            android:layout_marginStart="12dp"
+            android:background="@drawable/bg_madeira"
+            android:text="@string/btn_atacar"
+            android:fontFamily="@font/medieval"
+            android:textAllCaps="false"
+            android:textColor="@color/pergaminho"
+            android:textSize="22sp"
+            android:textStyle="bold" />
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/btnDefender"
+            android:layout_width="150dp"
+            android:layout_height="match_parent"
+            android:layout_marginStart="12dp"
+            android:background="@drawable/bg_madeira"
+            android:text="@string/btn_defender"
+            android:fontFamily="@font/medieval"
+            android:textAllCaps="false"
+            android:textColor="@color/pergaminho"
+            android:textSize="22sp"
+            android:textStyle="bold" />
+    </LinearLayout>
+
+    <!-- Resultado da batalha: cobre a tela inteira (e bloqueia os toques atrás dele).
+         Fica escondido (gone) até a luta terminar. -->
+    <FrameLayout
+        android:id="@+id/painelResultado"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:background="@color/fundo_resultado"
+        android:clickable="true"
+        android:focusable="true"
+        android:visibility="gone"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent">
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:minWidth="340dp"
+            android:paddingHorizontal="32dp"
+            android:paddingVertical="20dp"
+            android:background="@drawable/bg_pergaminho"
+            android:gravity="center_horizontal"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/txtResultadoTitulo"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/medieval"
+                android:textColor="@color/madeira_escura"
+                android:textSize="36sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/txtResultadoTexto"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="6dp"
+                android:gravity="center"
+                android:fontFamily="@font/medieval"
+                android:textColor="@color/tinta"
+                android:textSize="18sp" />
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/btnVoltarMenu"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="18dp"
+                android:paddingHorizontal="32dp"
+                android:background="@drawable/bg_madeira"
+                android:text="@string/btn_voltar_menu"
+                android:fontFamily="@font/medieval"
+                android:textAllCaps="false"
+                android:textColor="@color/pergaminho"
+                android:textSize="22sp"
+                android:textStyle="bold" />
+        </LinearLayout>
+    </FrameLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

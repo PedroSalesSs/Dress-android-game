@@ -12,4 +12,12 @@
     <color name="dourado">#D9A441</color>
     <color name="tinta">#2E1B0E</color>
     <color name="cinza_claro">#C8C8C8</color>
+
+    <!-- Batalha -->
+    <color name="vida_cheia">#5E9B3A</color>
+    <color name="vida_media">#D9A441</color>
+    <color name="vida_baixa">#B3402E</color>
+    <color name="efeito_golpe">#B3D42A1E</color>     <!-- vermelho translúcido ao levar um golpe -->
+    <color name="efeito_defesa">#804F86C6</color>    <!-- azul translúcido enquanto defende -->
+    <color name="fundo_resultado">#B3000000</color>  <!-- escurece a tela atrás do resultado -->
 </resources>

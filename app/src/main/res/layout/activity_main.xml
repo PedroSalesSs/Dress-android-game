@@ -9,7 +9,8 @@
     android:background="@drawable/fundo_pedra_repetido"
     tools:context=".MainActivity">
 
-    <!-- Área do personagem: quadrada (1:1), ocupando a largura da tela.
+    <!-- Área do personagem: quadrada (1:1). Ocupa o espaço que sobra acima dos controles,
+         então encolhe em telas mais baixas em vez de empurrar os botões para fora da tela.
          As camadas são empilhadas na ordem em que aparecem:
          a primeira fica no fundo e a última fica por cima de todas. -->
     <FrameLayout
@@ -21,6 +22,7 @@
         android:padding="12dp"
         app:layout_constraintDimensionRatio="1:1"
         app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/painelControles"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent">
 
@@ -107,8 +109,9 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="16dp"
+        android:layout_marginBottom="16dp"
         android:orientation="vertical"
-        app:layout_constraintTop_toBottomOf="@id/containerPersonagem"
+        app:layout_constraintBottom_toTopOf="@id/painelBotoes"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent">
 
@@ -135,10 +138,10 @@
         android:id="@+id/painelBotoes"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
+        android:layout_marginBottom="12dp"
         android:layout_marginHorizontal="32dp"
         android:orientation="horizontal"
-        app:layout_constraintTop_toBottomOf="@id/painelControles"
+        app:layout_constraintBottom_toTopOf="@id/painelBotoes2"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent">
 
@@ -177,10 +180,10 @@
         android:id="@+id/painelBotoes2"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="12dp"
+        android:layout_marginBottom="12dp"
         android:layout_marginHorizontal="32dp"
         android:orientation="horizontal"
-        app:layout_constraintTop_toBottomOf="@id/painelBotoes"
+        app:layout_constraintBottom_toTopOf="@id/btnBatalha"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent">
 
@@ -213,4 +216,29 @@
             android:textStyle="bold" />
 
     </LinearLayout>
+
+    <!-- Botão maior, abaixo das ações: abre a escolha do inimigo.
+         Os controles ficam presos de baixo para cima (este botão no rodapé,
+         as outras linhas logo acima), garantindo que tudo caiba na tela. -->
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/btnBatalha"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="32dp"
+        android:layout_marginBottom="16dp"
+        android:minHeight="64dp"
+        android:background="@drawable/bg_madeira"
+        android:text="@string/btn_batalha"
+        android:fontFamily="@font/medieval"
+        android:textAllCaps="false"
+        android:textColor="@color/dourado"
+        android:textSize="28sp"
+        android:textStyle="bold"
+        android:shadowColor="#000000"
+        android:shadowDx="2"
+        android:shadowDy="2"
+        android:shadowRadius="3"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
 </androidx.constraintlayout.widget.ConstraintLayout>
