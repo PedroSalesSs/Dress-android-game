@@ -32,8 +32,14 @@
 
     <!-- Batalha: combate -->
     <string name="nome_heroi">Herói</string>
-    <string name="btn_atacar">Atacar</string>
+    <string name="btn_ataque_leve">Ataque Leve</string>
     <string name="btn_defender">Defender</string>
+    <!-- Os botões de uso único mostram quantos usos restam: %1$d -->
+    <string name="btn_ataque_pesado">Ataque Pesado (%1$d)</string>
+    <string name="btn_pocao">Poção (%1$d)</string>
+    <!-- Textos só para a pré-visualização do layout; o código troca pelos de cima -->
+    <string name="btn_ataque_pesado_titulo">Ataque Pesado</string>
+    <string name="btn_pocao_titulo">Poção</string>
     <!-- %1$d = vida atual, %2$d = vida máxima -->
     <string name="vida_valor">%1$d / %2$d</string>
     <string name="msg_inicio">Um %1$s apareceu! O que você vai fazer?</string>
@@ -44,6 +50,13 @@
     <string name="msg_inimigo_ataca">O %1$s usa %2$s!</string>
     <string name="msg_dano_recebido">Você recebeu %1$d de dano.</string>
     <string name="msg_dano_defendido">Você defendeu! Recebeu só %1$d de dano.</string>
+    <string name="msg_bloqueio_perfeito">BLOQUEIO PERFEITO! Você contra-ataca: %1$d de dano!</string>
+    <string name="msg_concentrar">Você concentra sua força…</string>
+    <string name="msg_ataque_pesado">Ataque Pesado!</string>
+    <!-- %1$d = dano, %2$s = nome do inimigo -->
+    <string name="msg_dano_pesado">Golpe certeiro! %1$d de dano no %2$s.</string>
+    <string name="msg_dano_pesado_critico">GOLPE DEVASTADOR! Triplo de dano: %1$d!</string>
+    <string name="msg_pocao">Você bebe a poção: +%1$d de vida. Escolha sua ação!</string>
 
     <!-- Batalha: resultado -->
     <string name="resultado_vitoria">Vitória!</string>

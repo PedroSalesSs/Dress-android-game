@@ -118,4 +118,18 @@ public final class Catalogo {
             default:        return R.drawable.inimigo_orc;
         }
     }
+
+    /**
+     * Cenário de fundo da arena, um para cada inimigo. Os cenários são pixel art
+     * de 320 x 64 px, na mesma escala dos personagens.
+     */
+    @DrawableRes
+    public static int getImagemCenario(Inimigo inimigo) {
+        switch (inimigo) {
+            case ESQUELETO: return R.drawable.cenario_cemiterio;
+            case LOBISOMEM: return R.drawable.cenario_floresta;
+            case ORC:
+            default:        return R.drawable.cenario_acampamento;
+        }
+    }
 }

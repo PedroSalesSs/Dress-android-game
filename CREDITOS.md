@@ -1,6 +1,6 @@
 # Créditos
 
-O jogo **My Hero** foi desenvolvido como trabalho da disciplina de Dispositivos Móveis. O código é de autoria própria; as imagens dos personagens, a textura de fundo e a fonte foram criadas por outros artistas e são usadas de acordo com as licenças abertas indicadas abaixo. Muito obrigado a todos os autores por disponibilizarem seus trabalhos.
+O jogo **My Hero** foi desenvolvido como trabalho da disciplina de Dispositivos Móveis. O código, os efeitos sonoros e os cenários de batalha são de autoria própria; as imagens dos personagens, a textura de fundo e a fonte foram criadas por outros artistas e são usadas de acordo com as licenças abertas indicadas abaixo. Muito obrigado a todos os autores por disponibilizarem seus trabalhos.
 
 Os créditos também podem ser vistos dentro do app: na tela inicial, segure o dedo sobre o título *"Escolha seu personagem"*.
 
@@ -11,6 +11,8 @@ Os créditos também podem ser vistos dentro do app: na tela inicial, segure o d
 | Personagens, cabelos, roupas, inimigos e armas | Universal LPC Spritesheet Character Generator (Liberated Pixel Cup) | OGA-BY 3.0, CC-BY-SA 3.0, GPL 3.0, CC0, GPL 2.0 (varia por peça, detalhado abaixo) |
 | Textura de pedra do fundo | "stone wall 4", por West (OpenGameArt.org) | CC0 (domínio público) |
 | Fonte MedievalSharp | Wojciech Kalinowski (Google Fonts) | SIL Open Font License 1.1 |
+| Cenários de batalha (cemitério, floresta e acampamento) | Autoria própria (pixel art feita para o jogo) | Mesma licença do projeto |
+| Efeitos sonoros | Autoria própria (sons sintetizados por código) | Mesma licença do projeto |
 
 ## Personagens, cabelos e roupas (LPC)
 

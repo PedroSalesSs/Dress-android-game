@@ -19,5 +19,8 @@
     <color name="vida_baixa">#B3402E</color>
     <color name="efeito_golpe">#B3D42A1E</color>     <!-- vermelho translúcido ao levar um golpe -->
     <color name="efeito_defesa">#804F86C6</color>    <!-- azul translúcido enquanto defende -->
+    <color name="efeito_preparo">#80FF8C28</color>   <!-- laranja: inimigo preparando o golpe poderoso -->
+    <color name="efeito_concentrar">#80FFD25A</color> <!-- dourado: herói concentrando o Ataque Pesado -->
+    <color name="efeito_cura">#8066CC55</color>      <!-- verde: herói bebendo a poção -->
     <color name="fundo_resultado">#B3000000</color>  <!-- escurece a tela atrás do resultado -->
 </resources>

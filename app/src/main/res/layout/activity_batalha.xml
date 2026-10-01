@@ -125,44 +125,58 @@
         </LinearLayout>
     </LinearLayout>
 
-    <!-- Arena: a mesma moldura de madeira da tela de vestir.
-         Cada lutador ocupa metade; os quadros têm espaço sobrando para o golpe da arma. -->
-    <LinearLayout
+    <!-- Arena: a mesma moldura de madeira da tela de vestir, com o cenário do inimigo
+         ao fundo. Por cima dele, cada lutador ocupa metade da largura;
+         os quadros têm espaço sobrando para o golpe da arma. -->
+    <FrameLayout
         android:id="@+id/arena"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_marginHorizontal="16dp"
         android:layout_marginVertical="10dp"
-        android:padding="14dp"
+        android:padding="10dp"
         android:background="@drawable/bg_moldura"
-        android:orientation="horizontal"
         app:layout_constraintTop_toBottomOf="@id/painelHeroi"
         app:layout_constraintBottom_toTopOf="@id/painelAcoes"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent">
 
+        <!-- Cenário: cemitério, floresta ou acampamento (definido pelo código) -->
         <ImageView
-            android:id="@+id/imgHeroi"
-            android:layout_width="0dp"
+            android:id="@+id/imgCenario"
+            android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:scaleType="fitCenter"
-            android:contentDescription="@string/nome_heroi" />
+            android:scaleType="centerCrop"
+            android:importantForAccessibility="no" />
 
-        <ImageView
-            android:id="@+id/imgInimigo"
-            android:layout_width="0dp"
+        <LinearLayout
+            android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:scaleType="fitCenter"
-            android:contentDescription="@string/descricao_img_inimigo" />
-    </LinearLayout>
+            android:orientation="horizontal">
 
-    <!-- Caixa de mensagens e botões de ação, lado a lado -->
+            <ImageView
+                android:id="@+id/imgHeroi"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:scaleType="fitCenter"
+                android:contentDescription="@string/nome_heroi" />
+
+            <ImageView
+                android:id="@+id/imgInimigo"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:scaleType="fitCenter"
+                android:contentDescription="@string/descricao_img_inimigo" />
+        </LinearLayout>
+    </FrameLayout>
+
+    <!-- Caixa de mensagens (esquerda) e grade 2x2 com as quatro ações (direita) -->
     <LinearLayout
         android:id="@+id/painelAcoes"
         android:layout_width="0dp"
-        android:layout_height="56dp"
+        android:layout_height="104dp"
         android:layout_marginHorizontal="16dp"
         android:layout_marginBottom="12dp"
         android:orientation="horizontal"
@@ -182,31 +196,86 @@
             android:textColor="@color/tinta"
             android:textSize="18sp" />
 
-        <androidx.appcompat.widget.AppCompatButton
-            android:id="@+id/btnAtacar"
-            android:layout_width="150dp"
+        <!-- Grade de ações: duas linhas com dois botões cada -->
+        <LinearLayout
+            android:layout_width="344dp"
             android:layout_height="match_parent"
             android:layout_marginStart="12dp"
-            android:background="@drawable/bg_madeira"
-            android:text="@string/btn_atacar"
-            android:fontFamily="@font/medieval"
-            android:textAllCaps="false"
-            android:textColor="@color/pergaminho"
-            android:textSize="22sp"
-            android:textStyle="bold" />
+            android:orientation="vertical">
 
-        <androidx.appcompat.widget.AppCompatButton
-            android:id="@+id/btnDefender"
-            android:layout_width="150dp"
-            android:layout_height="match_parent"
-            android:layout_marginStart="12dp"
-            android:background="@drawable/bg_madeira"
-            android:text="@string/btn_defender"
-            android:fontFamily="@font/medieval"
-            android:textAllCaps="false"
-            android:textColor="@color/pergaminho"
-            android:textSize="22sp"
-            android:textStyle="bold" />
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:orientation="horizontal">
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/btnAtaqueLeve"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:layout_marginStart="0dp"
+                android:background="@drawable/bg_madeira"
+                android:text="@string/btn_ataque_leve"
+                android:fontFamily="@font/medieval"
+                android:textAllCaps="false"
+                android:textColor="@color/pergaminho"
+                android:textSize="20sp"
+                android:textStyle="bold" />
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/btnDefender"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:layout_marginStart="8dp"
+                android:background="@drawable/bg_madeira"
+                android:text="@string/btn_defender"
+                android:fontFamily="@font/medieval"
+                android:textAllCaps="false"
+                android:textColor="@color/pergaminho"
+                android:textSize="20sp"
+                android:textStyle="bold" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:layout_marginTop="8dp"
+                android:orientation="horizontal">
+
+            <!-- O texto destes dois inclui quantos usos restam; é preenchido pelo código.
+                 O Ataque Pesado usa letra um pouco menor, para o nome caber no botão. -->
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/btnAtaquePesado"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:layout_marginStart="0dp"
+                android:background="@drawable/bg_madeira"
+                android:text="@string/btn_ataque_pesado_titulo"
+                android:fontFamily="@font/medieval"
+                android:textAllCaps="false"
+                android:textColor="@color/pergaminho"
+                android:textSize="17sp"
+                android:textStyle="bold" />
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/btnPocao"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:layout_marginStart="8dp"
+                android:background="@drawable/bg_madeira"
+                android:text="@string/btn_pocao_titulo"
+                android:fontFamily="@font/medieval"
+                android:textAllCaps="false"
+                android:textColor="@color/pergaminho"
+                android:textSize="20sp"
+                android:textStyle="bold" />
+            </LinearLayout>
+        </LinearLayout>
     </LinearLayout>
 
     <!-- Resultado da batalha: cobre a tela inteira (e bloqueia os toques atrás dele).
