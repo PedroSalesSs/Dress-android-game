@@ -39,7 +39,7 @@ public class Batalha {
     public static final double FRACAO_DANO_DEFENDENDO = 0.35;
 
     /** Chance de, ao defender, bloquear o golpe inteiro e contra-atacar. */
-    public static final double CHANCE_BLOQUEIO_PERFEITO = 0.20;
+    public static final double CHANCE_BLOQUEIO_PERFEITO = 0.30;
 
     // ===================================================================== inimigo
 
