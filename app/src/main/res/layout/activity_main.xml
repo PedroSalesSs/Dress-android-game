@@ -39,6 +39,13 @@
             app:layout_constraintTop_toTopOf="@id/containerPersonagem"
             app:layout_constraintStart_toStartOf="@id/containerPersonagem" />
 
+        <!-- Mecha do cabelo que fica atrás do corpo (só alguns cabelos têm) -->
+        <ImageView
+            android:id="@+id/imgCabeloFundo"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:contentDescription="@null" />
+
         <!-- Base do personagem -->
         <ImageView
             android:id="@+id/imgCorpo"
@@ -76,6 +83,18 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:contentDescription="@null" />
+
+        <!-- Botão de herói aleatório, no canto superior direito (por cima das camadas) -->
+        <ImageButton
+            android:id="@+id/btnAleatorio"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:layout_margin="8dp"
+            android:layout_gravity="top|end"
+            android:background="@drawable/bg_madeira"
+            app:tint="@color/pergaminho"
+            android:contentDescription="@string/btn_aleatorio"
+            android:src="@drawable/ic_dado" />
 
     </FrameLayout>
 

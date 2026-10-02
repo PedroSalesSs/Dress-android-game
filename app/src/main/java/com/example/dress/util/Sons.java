@@ -35,7 +35,8 @@ public class Sons {
         POCAO(R.raw.som_pocao),
         AVISO_INIMIGO(R.raw.som_aviso_inimigo),
         VITORIA(R.raw.som_vitoria),
-        DERROTA(R.raw.som_derrota);
+        DERROTA(R.raw.som_derrota),
+        DADO(R.raw.som_dado);
 
         @RawRes final int arquivo;
 

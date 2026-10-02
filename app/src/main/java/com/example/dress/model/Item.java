@@ -22,6 +22,10 @@ public class Item {
     @DrawableRes private final int imagemMasculina;
     @DrawableRes private final int imagemFeminina;
 
+    // Parte do cabelo que fica ATRÁS do corpo (rabos, tranças, fios longos).
+    // A maioria das peças não tem: nesse caso vale SEM_IMAGEM.
+    @DrawableRes private final int imagemFundo;
+
     // Animações que não existem no LPC para esta peça (hoje todas as peças têm todas;
     // fica como proteção caso alguma peça nova venha incompleta)
     private final Set<Animacao> animacoesIndisponiveis;
@@ -33,11 +37,19 @@ public class Item {
     public Item(String id, String nome, Categoria categoria,
                 @DrawableRes int imagemMasculina, @DrawableRes int imagemFeminina,
                 Animacao... semAnimacao) {
+        this(id, nome, categoria, imagemMasculina, imagemFeminina, SEM_IMAGEM, semAnimacao);
+    }
+
+    // Construtor completo, usado pelos outros e pela fábrica cabeloComMecha()
+    private Item(String id, String nome, Categoria categoria,
+                 @DrawableRes int imagemMasculina, @DrawableRes int imagemFeminina,
+                 @DrawableRes int imagemFundo, Animacao[] semAnimacao) {
         this.id = id;
         this.nome = nome;
         this.categoria = categoria;
         this.imagemMasculina = imagemMasculina;
         this.imagemFeminina = imagemFeminina;
+        this.imagemFundo = imagemFundo;
 
         // EnumSet.copyOf não aceita coleção vazia, por isso o caso vazio é tratado à parte
         Set<Animacao> indisponiveis = EnumSet.noneOf(Animacao.class);
@@ -48,6 +60,23 @@ public class Item {
     // Construtor para peças que servem nos dois corpos (cabelos)
     public Item(String id, String nome, Categoria categoria, @DrawableRes int imagemUnica) {
         this(id, nome, categoria, imagemUnica, imagemUnica);
+    }
+
+    /**
+     * Cria um cabelo com uma mecha que fica atrás do corpo (ex.: cachos longos, trança).
+     * São duas imagens: a frente, desenhada por cima de tudo, e o fundo, desenhado
+     * antes do corpo. É um método "fábrica" em vez de mais um construtor porque
+     * um construtor com cinco parâmetros teria a mesma forma do construtor das roupas.
+     */
+    public static Item cabeloComMecha(String id, String nome,
+                                      @DrawableRes int imagemFrente, @DrawableRes int imagemFundo) {
+        return new Item(id, nome, Categoria.CABELO, imagemFrente, imagemFrente, imagemFundo, new Animacao[0]);
+    }
+
+    // Imagem da parte de trás (atrás do corpo), ou SEM_IMAGEM se a peça não tiver
+    @DrawableRes
+    public int getImagemFundo() {
+        return imagemFundo;
     }
 
     // Retorna a imagem certa de acordo com o corpo escolhido pelo jogador

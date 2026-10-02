@@ -33,9 +33,11 @@ import com.example.dress.model.Personagem;
 import com.example.dress.model.TipoCorpo;
 import com.example.dress.model.TomPele;
 import com.example.dress.util.FiltroCabelo;
+import com.example.dress.util.Sons;
 import com.example.dress.util.SpriteLoader;
 
 import java.util.List;
+import java.util.Random;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -47,6 +49,10 @@ public class MainActivity extends AppCompatActivity {
     private Direcao direcao = Direcao.FRENTE;
     private CorCabelo corCabelo = CorCabelo.RUIVO;
     private TomPele tomPele = TomPele.CLARA;
+
+    // Herói aleatório: o sorteio e o som do dado
+    private final Random sorteio = new Random();
+    private Sons sons;
 
     // ===== Estado da animação =====
     private final Handler handler = new Handler(Looper.getMainLooper());
@@ -101,6 +107,10 @@ public class MainActivity extends AppCompatActivity {
         // Abre a janela para escolher contra qual inimigo lutar
         binding.btnBatalha.setOnClickListener(v -> escolherInimigo());
 
+        // Sorteia um visual completo: peças, cor do cabelo e tom de pele
+        sons = new Sons(this);
+        binding.btnAleatorio.setOnClickListener(v -> sortearHeroi());
+
         // Fecha esta tela e volta para a tela de escolha (que está embaixo na pilha)
         binding.btnVoltar.setOnClickListener(v -> finish());
 
@@ -140,10 +150,13 @@ public class MainActivity extends AppCompatActivity {
      * (setas, giro e caminhada), por isso só precisa ser aplicado quando a cor muda.
      */
     private void aplicarCorCabelo() {
-        if (corCabelo.precisaTingir()) {
-            binding.imgCabelo.setColorFilter(FiltroCabelo.criar(corCabelo.getCor()));
-        } else {
-            binding.imgCabelo.clearColorFilter();  // cor original do sprite
+        // A mecha de trás (quando existe) recebe a mesma cor da frente
+        for (ImageView camada : new ImageView[]{binding.imgCabelo, binding.imgCabeloFundo}) {
+            if (corCabelo.precisaTingir()) {
+                camada.setColorFilter(FiltroCabelo.criar(corCabelo.getCor()));
+            } else {
+                camada.clearColorFilter();  // cor original do sprite
+            }
         }
 
         ImageViewCompat.setImageTintList(binding.btnCorCabelo,
@@ -223,6 +236,57 @@ public class MainActivity extends AppCompatActivity {
         if (animacaoAtual != Animacao.PARADO) {
             pararAnimacao();
         }
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        sons.liberar(); // devolve ao sistema a memória dos sons
+    }
+
+    /**
+     * Herói aleatório: sorteia uma peça de cada categoria, a cor do cabelo e o tom de pele.
+     * "Nenhum" não entra no sorteio, para o herói sair sempre completo, e o sorteio
+     * se repete até o visual ficar diferente do atual (senão o botão pareceria não funcionar).
+     * O tipo de corpo continua o escolhido na tela inicial.
+     */
+    private void sortearHeroi() {
+        sons.tocar(Sons.Som.DADO);
+        String visualAnterior = descreverVisual();
+
+        do {
+            for (Categoria categoria : Categoria.values()) {
+                List<Item> opcoes = Catalogo.getPorCategoria(categoria, personagem.getTipoCorpo());
+                if (!opcoes.isEmpty()) {
+                    personagem.equipar(opcoes.get(sorteio.nextInt(opcoes.size())));
+                }
+            }
+            corCabelo = sortear(CorCabelo.values());
+            tomPele = sortear(TomPele.values());
+        } while (descreverVisual().equals(visualAnterior));
+
+        // Mesma regra das setas: se alguma peça não tiver a animação atual, o personagem para
+        if (personagem.pecaSemAnimacao(animacaoAtual) != null) {
+            pararAnimacao();
+        }
+        atualizarDisponibilidadeBotoes();
+        aplicarCorCabelo();
+        aplicarTomPele(); // também redesenha o personagem
+    }
+
+    /** Sorteia um valor de um enum (ex.: uma das cores de cabelo). */
+    private <T> T sortear(T[] valores) {
+        return valores[sorteio.nextInt(valores.length)];
+    }
+
+    /** Resume o visual atual num texto, só para comparar se o sorteio mudou alguma coisa. */
+    private String descreverVisual() {
+        StringBuilder texto = new StringBuilder();
+        for (Categoria categoria : Categoria.values()) {
+            Item item = personagem.getEquipado(categoria);
+            texto.append(item == null ? "-" : item.getId()).append('|');
+        }
+        return texto.append(corCabelo).append('|').append(tomPele).toString();
     }
 
     /**
@@ -369,6 +433,10 @@ public class MainActivity extends AppCompatActivity {
         mostrarPeca(binding.imgSapato, binding.linhaSapato, Categoria.SAPATO);
         mostrarPeca(binding.imgCamisa, binding.linhaCamisa, Categoria.CAMISA);
         mostrarPeca(binding.imgCabelo, binding.linhaCabelo, Categoria.CABELO);
+
+        // Mecha atrás do corpo: só alguns cabelos têm; nos outros a camada fica vazia
+        Item cabelo = personagem.getEquipado(Categoria.CABELO);
+        mostrarImagem(binding.imgCabeloFundo, cabelo != null ? cabelo.getImagemFundo() : Item.SEM_IMAGEM);
     }
 
     /** Mostra a peça equipada na camada e o nome dela na linha correspondente. */

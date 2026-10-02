@@ -23,8 +23,9 @@ Projeto desenvolvido para a disciplina de **Dispositivos Móveis** do curso de *
 - **Troca direta entre animações**: dá para passar de andar para correr (ou sentar) sem parar antes; tocar no botão da animação ativa faz o personagem parar.
 - **Cor do cabelo**: ruivo, castanho, preto e loiro.
 - **Tom de pele**: quatro tons, trocados sem alterar os olhos nem os detalhes do rosto.
+- **Herói aleatório**: o botão de dado, no canto da moldura, sorteia um visual completo (cabelo, roupas, cor do cabelo e tom de pele), sempre diferente do atual.
 - **Batalha por turnos**: o botão *Batalha* abre a escolha do inimigo (esqueleto, lobisomem ou orc, em ordem de dificuldade). A luta acontece numa tela deitada, com o herói usando a roupa montada pelo jogador e um cenário próprio para cada inimigo (cemitério, floresta e acampamento). No fim aparece o resultado (vitória ou derrota) e o botão para voltar ao menu.
-- **Quatro ações de combate**: **Ataque Leve**; **Defender**, que reduz o golpe em 65% e tem 20% de chance de bloqueio perfeito (nenhum dano e contra-ataque); **Ataque Pesado**, que concentra a força por um turno e sai no seguinte com o dobro do dano (35% de chance de triplo), uma vez por luta; e **Poção**, que recupera 15 de vida sem gastar o turno, uma vez por luta.
+- **Quatro ações de combate**: **Ataque Leve**; **Defender**, que reduz o golpe em 65% e tem 30% de chance de bloqueio perfeito (nenhum dano e contra-ataque); **Ataque Pesado**, que concentra a força por um turno e sai no seguinte com o dobro do dano (35% de chance de triplo), uma vez por luta; e **Poção**, que recupera 15 de vida sem gastar o turno, uma vez por luta.
 - **Golpes poderosos anunciados**: de vez em quando o inimigo se prepara (com aviso na tela e um brilho alaranjado) e, no turno seguinte, solta um golpe especial: a *Estocada Certeira* do esqueleto atravessa a guarda, a *Fúria Selvagem* do lobisomem são dois golpes seguidos e o *Golpe Brutal* do orc causa o triplo do dano. Defender na hora certa é o que decide a luta.
 - **Efeitos sonoros**: golpes, impactos, defesa, bloqueio perfeito, poção, avisos dos inimigos e fanfarras de vitória e derrota.
 - **Créditos secretos**: na tela inicial, segure o dedo sobre o título *"Escolha seu personagem"*.
@@ -42,7 +43,7 @@ Ao todo, são **milhares de combinações** possíveis de visual.
 
 ## Destaques técnicos
 
-**Personagem em camadas.** O personagem é formado por seis imagens empilhadas (corpo, cabeça, calça, calçado, camisa e cabelo). Como todos os sprites seguem a mesma grade, as peças se encaixam sem nenhum cálculo de posição.
+**Personagem em camadas.** O personagem é formado por sete imagens empilhadas (mecha de trás do cabelo, corpo, cabeça, calça, calçado, camisa e cabelo). Como todos os sprites seguem a mesma grade, as peças se encaixam sem nenhum cálculo de posição. Alguns cabelos longos, como os cachos e a trança no ombro, têm uma parte que fica atrás do corpo: ela vai na primeira camada, desenhada antes de todas, e recebe a mesma cor do resto do cabelo.
 
 **Recorte de spritesheets.** Cada peça é uma única folha de 576x1088 px com as animações empilhadas em blocos de 4 linhas (uma por direção): andar nas linhas 0 a 3, correr nas linhas 4 a 7, sentar nas linhas 8 a 11 e atacar nas linhas 12 a 15. A derrota ocupa só a linha 16, porque o LPC a desenha apenas de frente. Juntar tudo numa folha só (técnica conhecida como *texture atlas*) evita um arquivo por animação. A classe `SpriteLoader` recorta o quadro certo de acordo com a animação, a direção e o momento da animação, e amplia a pixel art sem suavização para mantê-la nítida.
 

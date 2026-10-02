@@ -632,7 +632,8 @@ public class BatalhaActivity extends AppCompatActivity {
 
     /**
      * Desenha um quadro do herói (128 x 64) em camadas, de trás para a frente:
-     * parte de trás da espada, corpo, cabeça, roupas e parte da frente da espada.
+     * parte de trás da espada, mecha de trás do cabelo, corpo, cabeça, roupas
+     * e parte da frente da espada.
      * O herói fica na metade esquerda; a direita é o espaço do golpe.
      */
     private Bitmap montarQuadroHeroi(Animacao animacao, int quadro, int linhaEspada, int colunaEspada) {
@@ -642,6 +643,13 @@ public class BatalhaActivity extends AppCompatActivity {
 
         int espada = Catalogo.getImagemEspada();
         canvas.drawBitmap(SpriteLoader.carregarQuadroBatalha(this, espada, linhaEspada, colunaEspada), 0, 0, null);
+
+        // Mecha do cabelo que fica atrás do corpo (só alguns cabelos têm)
+        for (Item item : roupas) {
+            if (item.getImagemFundo() != Item.SEM_IMAGEM) {
+                desenharCamada(canvas, item.getImagemFundo(), animacao, quadro, TomPele.CLARA, pinturaCabelo);
+            }
+        }
 
         desenharCamada(canvas, Catalogo.getImagemCorpo(corpo), animacao, quadro, tomPele, null);
         desenharCamada(canvas, Catalogo.getImagemCabeca(corpo), animacao, quadro, tomPele, null);

@@ -21,6 +21,7 @@
     <string name="aviso_sem_animacao">A peça \"%1$s\" não tem essa animação. Troque-a para usar este botão.</string>
     <string name="btn_cor_cabelo">Mudar a cor do cabelo</string>
     <string name="btn_tom_pele">Mudar o tom de pele</string>
+    <string name="btn_aleatorio">Herói aleatório</string>
 
     <!-- Batalha: escolha do inimigo -->
     <string name="btn_batalha">Batalha</string>

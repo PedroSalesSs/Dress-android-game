@@ -25,7 +25,7 @@ Para cada peça foram usados os arquivos `walk.png`, `run.png`, `sit.png`, `slas
 
 ### Todos os autores dos sprites usados
 
-bluecarrot16, JaidynReiman, Benjamin K. Smith (BenCreating), Evert, Eliza Wyatt (ElizaWy), TheraHedwig, MuffinElZangano, Durrani, Johannes Sjölund (wulax), Stephen Challener (Redshrike), Pierre Vigier (pvigier), ElizaWy, Matthew Krohn (makrohn), Manuel Riecke (MrBeast), thecilekli, Napsio (Vitruvian Studio), Michael Whitlock (bigbeargames), Joe White, Mandi Paugh, William.Thompsonj, Nila122, Napsio, Zi Ye, Sander Frenken (castelonia), Inboxninja
+bluecarrot16, JaidynReiman, Benjamin K. Smith (BenCreating), Evert, Eliza Wyatt (ElizaWy), TheraHedwig, MuffinElZangano, Durrani, Johannes Sjölund (wulax), Stephen Challener (Redshrike), Pierre Vigier (pvigier), ElizaWy, Matthew Krohn (makrohn), Manuel Riecke (MrBeast), thecilekli, Napsio (Vitruvian Studio), Michael Whitlock (bigbeargames), Joe White, Mandi Paugh, William.Thompsonj, Nila122, Napsio, Zi Ye, Sander Frenken (castelonia), Inboxninja, Fabzy, Lanea Zimmerman (Sharm), Bluecarrot16, Luke Mehl
 
 ### Base do personagem
 
@@ -140,6 +140,72 @@ bluecarrot16, JaidynReiman, Benjamin K. Smith (BenCreating), Evert, Eliza Wyatt 
   - https://opengameart.org/content/liberated-pixel-cup-lpc-base-assets-sprites-map-tiles
   - https://opengameart.org/content/lpc-expanded-hair
 
+**Dreads curtos** (`cabelo_dreads.png`)
+
+- Origem no LPC: `spritesheets/hair/dreadlocks_short/`
+- Autores: ElizaWy, bluecarrot16
+- Licenças: CC0
+- Links:
+  - https://opengameart.org/content/lpc-hair
+  - https://github.com/ElizaWy/LPC/blob/main/Characters/Hair
+  - https://opengameart.org/content/lpc-expanded-sit-run-jump-more
+- Observações: Original by bluecarrot16. Animated by ElizaWy.
+
+**Tranças nagô** (`cabelo_nago.png`)
+
+- Origem no LPC: `spritesheets/hair/cornrows/`
+- Autores: ElizaWy, bluecarrot16
+- Licenças: CC0
+- Links:
+  - https://opengameart.org/content/lpc-hair
+  - https://github.com/ElizaWy/LPC/blob/main/Characters/Hair
+  - https://opengameart.org/content/lpc-expanded-sit-run-jump-more
+- Observações: Original by bluecarrot16, animated by ElizaWy.
+
+**Franja** (`cabelo_franja.png`)
+
+- Origem no LPC: `spritesheets/hair/bangs/`
+- Autores: JaidynReiman, Manuel Riecke (MrBeast)
+- Licenças: CC-BY-SA 3.0, GPL 3.0
+- Links:
+  - https://opengameart.org/content/liberated-pixel-cup-lpc-base-assets-sprites-map-tiles
+  - https://opengameart.org/content/lpc-expanded-hair
+
+**Espetado** (`cabelo_espetado.png`)
+
+- Origem no LPC: `spritesheets/hair/spiked_liberty/`
+- Autores: Fabzy, bluecarrot16
+- Licenças: CC-BY-SA 3.0
+- Links:
+  - https://opengameart.org/content/the-revolution-hair
+  - https://opengameart.org/content/lpc-hair
+
+**Calvo** (`cabelo_calvo.png`)
+
+- Origem no LPC: `spritesheets/hair/balding/`
+- Autores: ElizaWy
+- Licenças: OGA-BY 3.0
+- Links:
+  - https://opengameart.org/content/lpc-hair
+
+**Cachos longos** (`cabelo_cachos_longos.png e cabelo_cachos_longos_fundo.png`)
+
+- Origem no LPC: `spritesheets/hair/curls_large_xlong/adult/`
+- Autores: JaidynReiman
+- Licenças: OGA-BY 3.0+, CC-BY 3.0+, GPL 3.0+
+- Links:
+  - https://opengameart.org/content/lpc-expanded-xlong-hair
+
+**Jogado no ombro** (`cabelo_ombro.png e cabelo_ombro_fundo.png`)
+
+- Origem no LPC: `spritesheets/hair/shoulderl/adult/`
+- Autores: JaidynReiman, Lanea Zimmerman (Sharm), Manuel Riecke (MrBeast)
+- Licenças: OGA-BY 3.0, CC-BY-SA 3.0, GPL 3.0
+- Links:
+  - https://opengameart.org/content/liberated-pixel-cup-lpc-base-assets-sprites-map-tiles
+  - https://github.com/jrconway3/Universal-LPC-spritesheet/commit/c32ce8a7edd9fc7fe7daa62a39cf64e5946020a2
+  - https://opengameart.org/content/lpc-expanded-hair
+
 ### Camisas
 
 **Camiseta (masculina)** (`camisa_tshirt_m.png`)
@@ -204,6 +270,49 @@ bluecarrot16, JaidynReiman, Benjamin K. Smith (BenCreating), Evert, Eliza Wyatt 
   - https://opengameart.org/content/lpc-combat-armor-for-women
   - http://opengameart.org/content/lpc-clothing-updates
 - Observações: original by wulax, adapted to female base by makrohn, recolor by bigbeargames, color reduced to 7 colors and adapted to v3 bases by bluecarrot16, run/jump/sit/climb/revised combat by JaidynReiman, reduced colors to 6 (based on Napsio's Vitruvian)
+
+**Jardineira** (`camisa_jardineira_m.png e _f.png`)
+
+- Origem no LPC: `spritesheets/torso/aprons/overalls/`
+- Autores: ElizaWy, bluecarrot16, JaidynReiman
+- Licenças: OGA-BY 3.0, GPL 3.0
+- Links:
+  - https://opengameart.org/content/lpc-revised-character-basics
+  - http://opengameart.org/content/lpc-clothing-updates
+- Observações: original overalls by ElizaWy, extended to all animation frames, adapted from teen to male base, and edited for v3 bases by bluecarrot16; extended to combat animations by JaidynReiman
+
+**Armadura de couro** (`camisa_couro_m.png e _f.png`)
+
+- Origem no LPC: `spritesheets/torso/armour/leather/`
+- Autores: Johannes Sjölund (wulax), bluecarrot16, JaidynReiman, Michael Whitlock (bigbeargames), Matthew Krohn (makrohn)
+- Licenças: OGA-BY 3.0, CC-BY-SA 3.0, GPL 3.0
+- Links:
+  - https://opengameart.org/content/lpc-medieval-fantasy-character-sprites
+  - https://opengameart.org/content/lpc-clothing-updates
+  - https://opengameart.org/content/lpc-expanded-armor
+  - https://opengameart.org/content/lpc-combat-armor-for-women
+- Observações: adapted to v3 bases by bluecarrot16, reduced colors and climb/emote/jump by JaidynReiman / recolor of torso/armour/leather/female/brown.png, adapted to v3 bases by bluecarrot16, reduced colors and climb/emote/jump by JaidynReiman / adapted to v3 bases by bluecarrot16, teen version by JaidynReiman adapted from Male and Female versions
+
+**Armadura de legionário** (`camisa_legionario_m.png e _f.png`)
+
+- Origem no LPC: `spritesheets/torso/armour/legion/`
+- Autores: Napsio (Vitruvian Studio), JaidynReiman, bluecarrot16, Nila122
+- Licenças: OGA-BY 3.0, CC-BY-SA 3.0, GPL 2.0, GPL 3.0
+- Links:
+  - https://opengameart.org/content/lpc-roman-armor
+- Observações: adapted to v3 bases by bluecarrot16, jump/run/sit/combat and teen by JaidynReiman, color reduction to 6 colors inspired by Napsio (Vitruvian Studio)
+
+**Cardigã sem manga** (`camisa_cardiga_m.png e _f.png`)
+
+- Origem no LPC: `spritesheets/torso/clothes/sleeveless/sleeveless2_cardigan/`
+- Autores: ElizaWy, JaidynReiman, Stephen Challener (Redshrike), Johannes Sjölund (wulax)
+- Licenças: OGA-BY 3.0
+- Links:
+  - http://opengameart.org/content/lpc-revised-character-basics
+  - https://github.com/ElizaWy/LPC/tree/main/Characters/Clothing
+  - https://opengameart.org/content/lpc-expanded-sit-run-jump-more
+  - https://opengameart.org/content/lpc-expanded-simple-shirts
+- Observações: original by ElizaWy; sleeveless adapted from original by JaidynReiman
 
 ### Calças
 
@@ -273,6 +382,39 @@ bluecarrot16, JaidynReiman, Benjamin K. Smith (BenCreating), Evert, Eliza Wyatt 
   - https://opengameart.org/content/lpc-expanded-armour
 - Observações: original by Nila122 to legion, adapted to v3 bases by bluecarrot16, climb/jump/sit/run by JaidynReiman
 
+**Meia-calça** (`calca_meiacalca_m.png e _f.png`)
+
+- Origem no LPC: `spritesheets/legs/hose/`
+- Autores: JaidynReiman, ElizaWy, bluecarrot16, Johannes Sjölund (wulax), Stephen Challener (Redshrike)
+- Licenças: OGA-BY 3.0, GPL 3.0
+- Links:
+  - https://github.com/ElizaWy/LPC/tree/main/Characters/Clothing
+  - https://opengameart.org/content/lpc-expanded-pants
+  - https://opengameart.org/content/lpc-expanded-sit-run-jump-more
+- Observações: Original bases by Redshrike, thrust/shoot bases by Wulax, original overalls and hose by ElizaWy, base animations adapted from v3 overalls by bluecarrot16, male hose by JaidynReiman / Original bases by Redshrike, thrust/shoot bases by Wulax, original by ElizaWy, remaining frames by JaidynReiman
+
+**Short** (`calca_short_m.png e _f.png`)
+
+- Origem no LPC: `spritesheets/legs/shorts/short_shorts/`
+- Autores: JaidynReiman, ElizaWy, Bluecarrot16, Johannes Sjölund (wulax), Stephen Challener (Redshrike)
+- Licenças: OGA-BY 3.0, GPL 3.0
+- Links:
+  - https://github.com/ElizaWy/LPC/tree/main/Characters/Clothing
+  - https://opengameart.org/content/lpc-expanded-pants
+  - https://opengameart.org/content/lpc-expanded-sit-run-jump-more
+- Observações: Original bases by Redshrike, thrust/shoot bases by Wulax, original overalls and shorts by ElizaWy, base animations adapted from v3 overalls by bluecarrot16, shorts by JaidynReiman / Original bases by Redshrike, thrust/shoot bases by Wulax, original shorts by ElizaWy, climb/jump/run/sit/emotes/revised combat by JaidynReiman
+
+**Calça longa** (`calca_longa_m.png e _f.png`)
+
+- Origem no LPC: `spritesheets/legs/pants2/`
+- Autores: JaidynReiman, ElizaWy, Bluecarrot16, Johannes Sjölund (wulax), Stephen Challener (Redshrike)
+- Licenças: OGA-BY 3.0, GPL 3.0
+- Links:
+  - https://github.com/ElizaWy/LPC/tree/main/Characters/Clothing
+  - https://opengameart.org/content/lpc-expanded-sit-run-jump-more
+  - https://opengameart.org/content/lpc-expanded-pants
+- Observações: original overalls by ElizaWy, base animations adapted from v3 overalls by bluecarrot16, pants by JaidynReiman / Original bases by Redshrike, thrust/shoot bases by Wulax, original pants by ElizaWy, climb/jump/run/sit/emotes/revised combat by JaidynReiman
+
 ### Calçados
 
 **Sapato (masculino)** (`pe_shoes_m.png`)
@@ -336,6 +478,36 @@ bluecarrot16, JaidynReiman, Benjamin K. Smith (BenCreating), Evert, Eliza Wyatt 
 - Links:
   - https://opengameart.org/content/lpc-medieval-fantasy-character-sprites
 - Observações: original by wulax, recolors by bigbeargames, edits for v3 base and recolors by bluecarrot16
+
+**Botas** (`pe_botas_m.png e _f.png`)
+
+- Origem no LPC: `spritesheets/feet/boots/basic/`
+- Autores: JaidynReiman, bluecarrot16, Nila122
+- Licenças: OGA-BY 3.0, CC-BY-SA 3.0, GPL 2.0, GPL 3.0
+- Links:
+  - https://opengameart.org/content/lpc-clothes-and-hair
+  - https://opengameart.org/content/lpc-expanded-socks-shoes
+- Observações: original by Nila122, edited for male and v3 bases by bluecarrot16, Jump/Sit/Emote/Run/Revised Combat by JaidynReiman / original by Nila122, edited for v3 bases by bluecarrot16, Jump/Sit/Emote/Run/Revised Combat by JaidynReiman
+
+**Pantufas** (`pe_pantufas_m.png e _f.png`)
+
+- Origem no LPC: `spritesheets/feet/slippers/`
+- Autores: bluecarrot16, JaidynReiman, Joe White, Luke Mehl
+- Licenças: CC-BY-SA 3.0, GPL 3.0
+- Links:
+  - https://opengameart.org/content/thin-mage-clothing-set
+  - http://opengameart.org/content/lpc-clothing-updates
+  - https://opengameart.org/content/lpc-expanded-socks-shoes
+- Observações: original by Luke Mehl, Joe White did thrust/shoot animations, edited for v3 bases and male sprites by bluecarrot16, Jump/Sit/Emote/Run/Revised Combat by JaidynReiman
+
+**Meias tabi** (`pe_tabi_m.png e _f.png`)
+
+- Origem no LPC: `spritesheets/feet/socks/tabi/`
+- Autores: JaidynReiman, Stephen Challener (Redshrike), Johannes Sjölund (wulax)
+- Licenças: OGA-BY 3.0+, CC-BY 3.0+, GPL 3.0
+- Links:
+  - https://opengameart.org/content/lpc-kimono-relm
+  - https://opengameart.org/content/lpc-expanded-socks-shoes
 
 ### Batalha
 

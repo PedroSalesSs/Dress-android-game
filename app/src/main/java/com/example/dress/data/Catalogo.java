@@ -30,6 +30,16 @@ public final class Catalogo {
             new Item("cabelo_idol", "Idol", Categoria.CABELO, R.drawable.cabelo_idol),
             new Item("cabelo_longo", "Longo", Categoria.CABELO, R.drawable.cabelo_longo),
             new Item("cabelo_solto", "Solto", Categoria.CABELO, R.drawable.cabelo_solto),
+            new Item("cabelo_dreads", "Dreads curtos", Categoria.CABELO, R.drawable.cabelo_dreads),
+            new Item("cabelo_nago", "Tranças nagô", Categoria.CABELO, R.drawable.cabelo_nago),
+            new Item("cabelo_franja", "Franja", Categoria.CABELO, R.drawable.cabelo_franja),
+            new Item("cabelo_espetado", "Espetado", Categoria.CABELO, R.drawable.cabelo_espetado),
+            new Item("cabelo_calvo", "Calvo", Categoria.CABELO, R.drawable.cabelo_calvo),
+            // Cabelos com mecha atrás do corpo: imagem da frente + imagem do fundo
+            Item.cabeloComMecha("cabelo_cachos_longos", "Cachos longos",
+                    R.drawable.cabelo_cachos_longos, R.drawable.cabelo_cachos_longos_fundo),
+            Item.cabeloComMecha("cabelo_ombro", "Jogado no ombro",
+                    R.drawable.cabelo_ombro, R.drawable.cabelo_ombro_fundo),
 
             // ===== CAMISAS (versão masculina, versão feminina) =====
             new Item("camisa_tshirt", "Camiseta", Categoria.CAMISA,
@@ -38,6 +48,14 @@ public final class Catalogo {
                     R.drawable.camisa_chainmail_m, R.drawable.camisa_chainmail_f),
             new Item("camisa_armour", "Peitoral de armadura", Categoria.CAMISA,
                     R.drawable.camisa_armour_m, R.drawable.camisa_armour_f),
+            new Item("camisa_jardineira", "Jardineira", Categoria.CAMISA,
+                    R.drawable.camisa_jardineira_m, R.drawable.camisa_jardineira_f),
+            new Item("camisa_couro", "Armadura de couro", Categoria.CAMISA,
+                    R.drawable.camisa_couro_m, R.drawable.camisa_couro_f),
+            new Item("camisa_legionario", "Armadura de legionário", Categoria.CAMISA,
+                    R.drawable.camisa_legionario_m, R.drawable.camisa_legionario_f),
+            new Item("camisa_cardiga", "Cardigã sem manga", Categoria.CAMISA,
+                    R.drawable.camisa_cardiga_m, R.drawable.camisa_cardiga_f),
 
             // ===== CALÇAS =====
             new Item("calca_pants", "Calça", Categoria.CALCA,
@@ -46,6 +64,12 @@ public final class Catalogo {
                     R.drawable.calca_legs_m, R.drawable.calca_legs_f),
             new Item("calca_legion", "Saia de legionário", Categoria.CALCA,
                     R.drawable.calca_legion_m, R.drawable.calca_legion_f),
+            new Item("calca_meiacalca", "Meia-calça", Categoria.CALCA,
+                    R.drawable.calca_meiacalca_m, R.drawable.calca_meiacalca_f),
+            new Item("calca_short", "Short", Categoria.CALCA,
+                    R.drawable.calca_short_m, R.drawable.calca_short_f),
+            new Item("calca_longa", "Calça longa", Categoria.CALCA,
+                    R.drawable.calca_longa_m, R.drawable.calca_longa_f),
 
             // ===== SAPATOS =====
             new Item("pe_shoes", "Sapato", Categoria.SAPATO,
@@ -53,7 +77,13 @@ public final class Catalogo {
             new Item("pe_sandals", "Sandália", Categoria.SAPATO,
                     R.drawable.pe_sandals_m, R.drawable.pe_sandals_f),
             new Item("pe_armour", "Botas de armadura", Categoria.SAPATO,
-                    R.drawable.pe_armour_m, R.drawable.pe_armour_f)
+                    R.drawable.pe_armour_m, R.drawable.pe_armour_f),
+            new Item("pe_botas", "Botas", Categoria.SAPATO,
+                    R.drawable.pe_botas_m, R.drawable.pe_botas_f),
+            new Item("pe_pantufas", "Pantufas", Categoria.SAPATO,
+                    R.drawable.pe_pantufas_m, R.drawable.pe_pantufas_f),
+            new Item("pe_tabi", "Meias tabi", Categoria.SAPATO,
+                    R.drawable.pe_tabi_m, R.drawable.pe_tabi_f)
     ));
 
     // Classe utilitária: não deve ser instanciada
